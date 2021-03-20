@@ -1,6 +1,9 @@
-body {
-  margin: 0;
+html,body {
+  margin: 0 !important;
+  padding:0 !important;
+  box-sizing: border-box !important;
   font-family: 'Noto Sans KR', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+
 }

@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
 // import classes from "./landing.module.css";
+import SignIn from "../../Components/SignIn/signin-form";
 import Container from "@material-ui/core/Container";
-import Search from '@material-ui/icons/Search';
-
+import Search from "@material-ui/icons/Search";
+import logoImage from "../../assets/logo.png";
+import drImage from "../../assets/dr.png";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
@@ -11,21 +13,13 @@ import {
   Grid,
   Paper,
   Button,
+  Avatar,
 } from "@material-ui/core";
-import { BorderColor } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   container: {
     height: "100vh",
-    width: "100%",
-    backgroundColor:"white",
-  },
-  columns: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    height: "100%",
+    backgroundColor: "white",
   },
   btn2: {
     boxSizing: "border-box",
@@ -37,10 +31,24 @@ const useStyles = makeStyles({
       border: "none",
     },
   },
-  btn1:{
-    color:"#4e21ff",
-    border: '1px solid #4e21ff'
-  }
+  btn1: {
+    color: "#4e21ff",
+    border: "1px solid #4e21ff",
+  },
+  col: {
+    // border: "1px solid black",
+    width: "50%",
+    height: "90vh",
+    // padding:"2%"
+  },
+  img: {
+    width: "100px",
+    height: "100px",
+  },
+  img2: {
+    width: "100%",
+    height: "500px",
+  },
 });
 
 const Landing = (props) => {
@@ -48,30 +56,64 @@ const Landing = (props) => {
   return (
     <Fragment>
       <CssBaseline />
+
       <Container maxWidth={1} className={classes.container}>
-        <Grid container justify="flex-end" spacing={2}>
+        <Grid container spacing={2}>
+          <Box flexGrow={1}>
+            <Grid item>
+              <img src={logoImage} className={classes.img} />
+            </Grid>
+          </Box>
+
           <Grid item>
             <Box mt={2}>
-              <Button variant="outlined" color="primary" className = {classes.btn1}>
-               Signup
+              <Button
+                variant="outlined"
+                color="primary"
+                className={classes.btn1}
+              >
+                Signup
               </Button>
             </Box>
           </Grid>
           <Grid item>
             <Box mt={2}>
               <Button
-               startIcon={<Search />}
+                startIcon={<Search />}
                 variant="contained"
                 color="primary"
                 className={classes.btn2}
               >
-               Search
+                Search
               </Button>
             </Box>
           </Grid>
-          <Grid container></Grid>
+        </Grid>
 
-          <Grid item></Grid>
+        <Grid container>
+          <Grid
+            className={classes.col}
+            item
+            container
+            direction="column"
+            justify="center"
+          >
+            <Grid item>
+              <Typography variant="h3">
+                A Platform Which Helps You
+                <br /> To Arrange Blood
+                <br /> On The Go
+              </Typography>
+            </Grid>
+            <Grid item>
+              <SignIn />
+            </Grid>
+          </Grid>
+
+          <Grid item className={classes.col}>
+          <img src={drImage} className={classes.img2} />
+
+          </Grid>
         </Grid>
       </Container>
 
