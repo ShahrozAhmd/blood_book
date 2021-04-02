@@ -5,9 +5,13 @@ const useStyles = makeStyles((theme) =>{
         creatPostContainer: {
             '& > *': {
               width: theme.spacing(60),
-              height: theme.spacing(16),
+              height: theme.spacing(10),
             },
           },
+          postTexField:{
+            width: theme.spacing(50),
+          
+          }
 
   }});
 
