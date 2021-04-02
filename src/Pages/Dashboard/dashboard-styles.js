@@ -7,6 +7,11 @@ const useStyles = makeStyles({
     // height: "100vh"
   },
 
+  mainFeed: {
+    textAlign: "center",
+    border: "5px solid skyblue",
+    maxWidth:"70%"
+  },
   container: {
     // height: "100vh",
     backgroundColor: "white",
