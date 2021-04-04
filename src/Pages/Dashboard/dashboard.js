@@ -1,4 +1,4 @@
-import CreatePost from '../../Components/Create Post/create-post'
+import CreatePost from '../../Components/Create Post/create-post-container'
 import { Box, Container, CssBaseline, Grid } from "@material-ui/core";
 import { Height } from "@material-ui/icons";
 import react, { Fragment } from "react";
