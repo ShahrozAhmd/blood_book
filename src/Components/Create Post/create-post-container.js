@@ -51,13 +51,9 @@ const CreatePostContainer = () => {
           <Card className={classes.root} onClick={handleOpen}>
             <CardActionArea>
               <CardContent>
-                <form className={classes.root} noValidate autoComplete="off">
-                  <TextField
-                    className={classes.postTexField}
-                    id="standard-basic"
-                    label="Create a blood request post"
-                  />
-                </form>
+              <Box>
+                <Typography className = {classes.postTexField} variant = "subtitle1">Write your request post..</Typography>
+              </Box>
               </CardContent>
             </CardActionArea>
           </Card>

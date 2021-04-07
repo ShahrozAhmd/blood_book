@@ -9,7 +9,9 @@ const useStyles = makeStyles((theme) => {
       },
     },
     postTexField: {
-      width: theme.spacing(50),
+      backgroundColor:"#F2F3F4",
+      padding:"1%",
+      borderRadius:"10px"
     },
     paper: {
       position: "absolute",
@@ -27,6 +29,19 @@ const useStyles = makeStyles((theme) => {
         width: theme.spacing(50),
         height: theme.spacing(40),
       },
+    },
+    writepost: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: "90%"
+      },
+    },
+    button: {
+      margin: theme.spacing(1),
+    
+    },
+    input: {
+      display: 'none',
     },
   };
 });
