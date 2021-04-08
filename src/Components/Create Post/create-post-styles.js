@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => {
     postTexField: {
       backgroundColor:"#F2F3F4",
       padding:"1%",
-      borderRadius:"10px"
+      borderRadius:"10px",
+      color:"#909497"
     },
     paper: {
       position: "absolute",
@@ -42,6 +43,10 @@ const useStyles = makeStyles((theme) => {
     },
     input: {
       display: 'none',
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
     },
   };
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import useStyles from "./create-post-styles";
@@ -7,10 +7,31 @@ import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import DescriptionIcon from "@material-ui/icons/Description";
 import VideocamIcon from "@material-ui/icons/Videocam";
 import AddLocationIcon from "@material-ui/icons/AddLocation";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
 import { Box } from "@material-ui/core";
 
 const CreatePost = () => {
   const classes = useStyles();
+
+  // state for handeling select blood option starts here
+  const [bloodType, setBloodType] = useState("");
+
+  const handleChangeBloodType = (event) => {
+    setBloodType(event.target.value);
+  };
+  // state for handeling select blood option ends here
+
+  // state for no of bottle of blood option starts here
+  const [bottles, setBottles] = useState("");
+
+  const handleChangeBottles = (event) => {
+    setBottles(event.target.value);
+  };
+  // state for no of bottle of blood option ends here
 
   return (
     <div className={classes.createpostbox}>
@@ -96,6 +117,37 @@ const CreatePost = () => {
                 </IconButton>
               </label>
             </Box>
+          </Box>
+
+          <Box display="flex" justifyContent="space-around">
+            {/* Select blood option */}
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-label">Blood Type</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={bloodType}
+                onChange={handleChangeBloodType}
+              >
+                <MenuItem value="A">A</MenuItem>
+                <MenuItem value="B">B</MenuItem>
+                <MenuItem value="C">C</MenuItem>
+              </Select>
+            </FormControl>
+            {/* Select no of bottles*/}
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-bottles">Bottles</InputLabel>
+              <Select
+                labelId="demo-simple-select-bottles"
+                id="demo-simple-select"
+                value={bottles}
+                onChange={handleChangeBottles}
+              >
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+              </Select>
+            </FormControl>
           </Box>
         </form>
       </Paper>
