@@ -12,6 +12,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 import { Box } from "@material-ui/core";
 
 const CreatePost = () => {
@@ -33,6 +36,16 @@ const CreatePost = () => {
   };
   // state for no of bottle of blood option ends here
 
+  //urgent blood option state starts>>>>
+  const [state, setState] = useState({
+    checkedA: true,
+    checkedB: true,
+  });
+
+  const handleChangeUrgentBlood = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+  //<<<< urgent blood option state end
   return (
     <div className={classes.createpostbox}>
       <Paper elevation={3}>
@@ -148,6 +161,33 @@ const CreatePost = () => {
                 <MenuItem value={3}>3</MenuItem>
               </Select>
             </FormControl>
+          </Box>
+          <Box display="flex" justifyContent="space-around">
+            <Box>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={state.checkedB}
+                    onChange={handleChangeUrgentBlood}
+                    name="checkedB"
+                    color="primary"
+                  />
+                }
+                label="Primary"
+              />
+            </Box>
+
+            <Box className={classes.dateField}>
+              <TextField
+                id="datetime-local"
+                label="Set Time/Date"
+                type="datetime-local"
+                defaultValue="2017-05-24T10:30"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </Box>
           </Box>
         </form>
       </Paper>
