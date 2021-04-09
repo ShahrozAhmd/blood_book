@@ -29,7 +29,7 @@ function getModalStyle() {
   };
 }
 
-const CreatePostContainer = () => {
+const CreatePostContainer = (props) => {
   const classes = useStyles();
 
   //modal working code
@@ -51,9 +51,14 @@ const CreatePostContainer = () => {
           <Card className={classes.root} onClick={handleOpen}>
             <CardActionArea>
               <CardContent>
-              <Box>
-                <Typography className = {classes.postTexField} variant = "subtitle1">Write your request post..</Typography>
-              </Box>
+                <Box>
+                  <Typography
+                    className={classes.postTexField}
+                    variant="subtitle1"
+                  >
+                    Write your request post..
+                  </Typography>
+                </Box>
               </CardContent>
             </CardActionArea>
           </Card>

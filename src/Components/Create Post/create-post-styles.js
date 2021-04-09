@@ -16,19 +16,18 @@ const useStyles = makeStyles((theme) => {
     },
     paper: {
       position: "absolute",
-      width: "40%",
+      padding:"0.5%",
+      width: "50%",
+      height:"70%",
       backgroundColor: theme.palette.background.paper,
-      border: "2px solid transparent",
       boxShadow: theme.shadows[5],
-      // padding: theme.spacing(2, 4, 3),
+      
     },
     createpostbox: {
-      display: "flex",
-      flexWrap: "wrap",
       "& > *": {
         margin: theme.spacing(1),
         width: "100%",
-        height: theme.spacing(40),
+        height: "100" 
       },
     },
     writepost: {
