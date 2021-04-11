@@ -1,10 +1,10 @@
-import CreatePost from '../../Components/Create Post/create-post-container'
+import CreatePost from "../../Components/Create Post/create-post-container";
 import { Box, Container, CssBaseline, Grid } from "@material-ui/core";
 import { Height } from "@material-ui/icons";
 import react, { Fragment } from "react";
 import Header from "../../Components/Header/header";
+import PostBox from "../../Components/Show Post/show-post-container";
 import useStyles from "./dashboard-styles";
-
 
 function Dashboard(props) {
   const classes = useStyles();
@@ -17,7 +17,12 @@ function Dashboard(props) {
         <Container maxWidth="md">
           <Box display="flex" className={classes.main} justifyContent="center">
             <Box className={classes.mainFeed} flexGrow={2}>
-              <CreatePost/>
+              <Box style = {{textAlign:"center"}}>
+              <CreatePost />
+              </Box>
+              <Box>
+                <PostBox />
+              </Box>
             </Box>
             <Box className={classes.box} flexGrow={1}>
               2
