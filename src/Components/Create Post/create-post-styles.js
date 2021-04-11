@@ -16,24 +16,33 @@ const useStyles = makeStyles((theme) => {
     },
     paper: {
       position: "absolute",
-      padding:"0.5%",
-      width: "50%",
-      height:"70%",
+      padding: "1%",
+      maxWidth: "40%",
+      height: "80%",
       backgroundColor: theme.palette.background.paper,
       boxShadow: theme.shadows[5],
-      
     },
+    // boxContainer: {
+    //   display: "flex",
+    //   flexDirection: "column",
+    //   // justifyContent: "center",
+    //   alignItems: "space-between",
+    // },
     createpostbox: {
-      "& > *": {
-        margin: theme.spacing(1),
-        width: "100%",
-        height: "100" 
-      },
+      // margin: theme.spacing(1),
+      padding:theme.spacing(3),
+      // width: "100%",
+      // height: "",
+      // "& > *": {
+      //   margin: theme.spacing(1),
+      //   width: "100%",
+      //   height: "100%",
+      // },
     },
     writepost: {
       "& .MuiTextField-root": {
-        margin: theme.spacing(1),
-        width: "90%",
+        // margin: theme.spacing(1),
+        width: "100%",
       },
     },
     button: {

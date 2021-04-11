@@ -71,9 +71,9 @@ const CreatePostContainer = (props) => {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div style={modalStyle} className={classes.paper}>
+        <Box style={modalStyle} className={classes.paper}>
           <CreatePost />
-        </div>
+        </Box>
       </Modal>
     </Fragment>
   );
