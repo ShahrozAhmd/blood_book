@@ -16,7 +16,10 @@ import Icon from "@material-ui/core/Icon";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Box, Button } from "@material-ui/core";
-import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import ImageIcon from "@material-ui/icons/Image";
+import VideocamIcon from "@material-ui/icons/Videocam";
+import DescriptionIcon from "@material-ui/icons/Description";
+import PersonPinCircleIcon from "@material-ui/icons/PersonPinCircle";
 
 const ShowPost = (props) => {
   const classes = useStyles();
@@ -62,6 +65,7 @@ const ShowPost = (props) => {
             the mussels, if you like.
           </Typography>
         </CardContent>
+        {/* Custom section 01 */}
         <CardActions>
           <Box
             display="flex"
@@ -77,7 +81,7 @@ const ShowPost = (props) => {
                 aria-label="upload picture"
                 component="span"
               >
-                <PhotoCamera />
+                <ImageIcon />
               </IconButton>
             </Box>
 
@@ -87,7 +91,7 @@ const ShowPost = (props) => {
                 aria-label="upload picture"
                 component="span"
               >
-                <PhotoCamera />
+                <VideocamIcon />
               </IconButton>
             </Box>
 
@@ -97,7 +101,7 @@ const ShowPost = (props) => {
                 aria-label="upload picture"
                 component="span"
               >
-                <PhotoCamera />
+                <DescriptionIcon />
               </IconButton>
             </Box>
             <Box>
@@ -106,9 +110,18 @@ const ShowPost = (props) => {
                 aria-label="upload picture"
                 component="span"
               >
-                <PhotoCamera />
+                <PersonPinCircleIcon />
               </IconButton>
             </Box>
+          </Box>
+          {/* Custom section 02 */}
+          <Box
+            display="flex"
+            justifyContent="space-evenly"
+            style={{ width: "100%" }}
+          >
+
+            
           </Box>
         </CardActions>
         <CardActions disableSpacing>
