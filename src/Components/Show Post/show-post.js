@@ -23,7 +23,8 @@ import PersonPinCircleIcon from "@material-ui/icons/PersonPinCircle";
 import Badge from "@material-ui/core/Badge";
 import MailIcon from "@material-ui/icons/Mail";
 import { FaTint, FaBong } from "react-icons/fa";
-
+import LocalAtmIcon from "@material-ui/icons/LocalAtm";
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 const ShowPost = (props) => {
   const classes = useStyles();
   //   states
@@ -35,7 +36,7 @@ const ShowPost = (props) => {
   return (
     <Fragment>
       <Box className={classes.root}>
-        {/* <Badge badgeContent={"urgent"} color="primary"> */}
+        <Badge badgeContent={"urgent"} color="primary">
         <Card>
           {/* header section of post box */}
           <CardHeader
@@ -65,9 +66,9 @@ const ShowPost = (props) => {
         /> */}
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              This impressive paella is a perfect party dish and a fun meal to
+            This impressive paella is a perfect party dish and a fun meal to
               cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels, if you like.
+              with the mussels.
             </Typography>
           </CardContent>
           {/* Custom section 01 */}
@@ -128,17 +129,35 @@ const ShowPost = (props) => {
               justifyContent="flex-end"
               style={{ width: "100%" }}
             >
-              <Box style={{ display: "inline" }}>
+              <Box style={{ display: "inline", margin: 0, padding: 0 }}>
+                {/* <Typography>A+</Typography> */}
                 <FaTint size={"1.7em"} style={{ color: "red" }} />
-                <Typography>A+</Typography>
               </Box>
               <Box>
                 <FaBong size={"1.7em"} style={{ color: "skyBlue" }} />
+                {/* <Typography>A+</Typography> */}
+              </Box>
+            </Box>
+          </CardActions>
+          {/* Custom section 03 */}
+          <CardActions>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              style={{ width: "100%" }}
+            >
+              <Box>
+                <CalendarTodayIcon/>
+                <Typography>April,13</Typography>
+              </Box>
+              <Box>
+                <LocalAtmIcon />
+                <Typography>1000</Typography>
               </Box>
             </Box>
           </CardActions>
 
-          <CardActions disableSpacing>
+          {/* <CardActions disableSpacing>
             <IconButton aria-label="add to favorites">
               <FavoriteIcon />
             </IconButton>
@@ -168,9 +187,9 @@ const ShowPost = (props) => {
                 skillet over medium-high heat.
               </Typography>
             </CardContent>
-          </Collapse>
+          </Collapse> */}
         </Card>
-        {/* </Badge> */}
+        </Badge>
       </Box>
     </Fragment>
   );
