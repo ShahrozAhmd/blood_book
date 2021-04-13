@@ -22,6 +22,7 @@ import DescriptionIcon from "@material-ui/icons/Description";
 import PersonPinCircleIcon from "@material-ui/icons/PersonPinCircle";
 import Badge from "@material-ui/core/Badge";
 import MailIcon from "@material-ui/icons/Mail";
+import { FaTint, FaBong } from "react-icons/fa";
 
 const ShowPost = (props) => {
   const classes = useStyles();
@@ -35,147 +36,140 @@ const ShowPost = (props) => {
     <Fragment>
       <Box className={classes.root}>
         {/* <Badge badgeContent={"urgent"} color="primary"> */}
-          <Card>
-            {/* header section of post box */}
-            <CardHeader
-              avatar={
-                <Avatar aria-label="profile-picture" className={classes.avatar}>
-                  U
-                </Avatar>
-              }
-              //    action={
-              //      <IconButton aria-label="settings">
-              //        <MoreVertIcon />
-              //      </IconButton>
-              //   }
-              //  action={
-              //     <Typography variant="p">
-              //         Karachi, Pakistan
-              //     </Typography>
-              //   }
-              title="User Name"
-              subheader="September 14, 2016"
-            />
-            {/* header section of post box ends here..*/}
-            {/* <CardMedia
+        <Card>
+          {/* header section of post box */}
+          <CardHeader
+            avatar={
+              <Avatar aria-label="profile-picture" className={classes.avatar}>
+                U
+              </Avatar>
+            }
+            //    action={
+            //      <IconButton aria-label="settings">
+            //        <MoreVertIcon />
+            //      </IconButton>
+            //   }
+            //  action={
+            //     <Typography variant="p">
+            //         Karachi, Pakistan
+            //     </Typography>
+            //   }
+            title="User Name"
+            subheader="September 14, 2016"
+          />
+          {/* header section of post box ends here..*/}
+          {/* <CardMedia
           className={classes.media}
           image="/static/images/cards/paella.jpg"
           title="Paella dish"
         /> */}
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              This impressive paella is a perfect party dish and a fun meal to
+              cook together with your guests. Add 1 cup of frozen peas along
+              with the mussels, if you like.
+            </Typography>
+          </CardContent>
+          {/* Custom section 01 */}
+          <CardActions>
+            <Box
+              display="flex"
+              justifyContent="space-evenly"
+              style={{ width: "100%" }}
+            >
+              <Box>
+                <p>Attached:</p>
+              </Box>
+              <Box>
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                >
+                  <ImageIcon />
+                </IconButton>
+              </Box>
+
+              <Box>
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                >
+                  <VideocamIcon />
+                </IconButton>
+              </Box>
+
+              <Box>
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                >
+                  <DescriptionIcon />
+                </IconButton>
+              </Box>
+              <Box>
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                >
+                  <PersonPinCircleIcon />
+                </IconButton>
+              </Box>
+            </Box>
+          </CardActions>
+
+          {/* Custom section 02 */}
+          <CardActions>
+            <Box
+              display="flex"
+              justifyContent="flex-end"
+              style={{ width: "100%" }}
+            >
+              <Box style={{ display: "inline" }}>
+                <FaTint size={"1.7em"} style={{ color: "red" }} />
+                <Typography>A+</Typography>
+              </Box>
+              <Box>
+                <FaBong size={"1.7em"} style={{ color: "skyBlue" }} />
+              </Box>
+            </Box>
+          </CardActions>
+
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography variant="body2" color="textSecondary" component="p">
-                This impressive paella is a perfect party dish and a fun meal to
-                cook together with your guests. Add 1 cup of frozen peas along
-                with the mussels, if you like.
+              <Typography paragraph>Method:</Typography>
+              <Typography paragraph>
+                Heat 1/2 cup of the broth in a pot until simmering, add saffron
+                and set aside for 10 minutes.
+              </Typography>
+              <Typography paragraph>
+                Heat oil in a (14- to 16-inch) paella pan or a large, deep
+                skillet over medium-high heat.
               </Typography>
             </CardContent>
-            {/* Custom section 01 */}
-            <CardActions>
-              <Box
-                display="flex"
-                justifyContent="space-evenly"
-                style={{ width: "100%" }}
-              >
-                <Box>
-                  <p>Attached:</p>
-                </Box>
-                <Box>
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                  >
-                    <ImageIcon />
-                  </IconButton>
-                </Box>
-
-                <Box>
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                  >
-                    <VideocamIcon />
-                  </IconButton>
-                </Box>
-
-                <Box>
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                  >
-                    <DescriptionIcon />
-                  </IconButton>
-                </Box>
-                <Box>
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                  >
-                    <PersonPinCircleIcon />
-                  </IconButton>
-                </Box>
-              </Box>
-            </CardActions>
-
-            {/* Custom section 02 */}
-            <CardActions>
-              <Box
-                display="flex"
-                justifyContent="flex-end"
-                style={{ width: "100%" }}
-              >
-                <Box>
-                  
-                  <h3>A+</h3>
-                </Box>
-                <Box>
-                  <h3>2 Bottles</h3>
-                </Box>
-              </Box>
-            </CardActions>
-
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-              <IconButton
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                <ExpandMoreIcon />
-              </IconButton>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>
-                <Typography paragraph>Method:</Typography>
-                <Typography paragraph>
-                  Heat 1/2 cup of the broth in a pot until simmering, add
-                  saffron and set aside for 10 minutes.
-                </Typography>
-                <Typography paragraph>
-                  Heat oil in a (14- to 16-inch) paella pan or a large, deep
-                  skillet over medium-high heat. Add chicken, shrimp and
-                  chorizo, and cook, stirring occasionally until lightly
-                  browned, 6 to 8 minutes. Transfer shrimp to a large plate and
-                  set aside, leaving chicken and chorizo in the pan. Add
-                  pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                  pepper, and cook, stirring often until thickened and fragrant,
-                  about 10 minutes. Add saffron broth and remaining 4 1/2 cups
-                  chicken broth; bring to a boil.
-                </Typography>
-              </CardContent>
-            </Collapse>
-          </Card>
+          </Collapse>
+        </Card>
         {/* </Badge> */}
       </Box>
     </Fragment>
