@@ -5,7 +5,11 @@ import useStyles from "./nearby-styles";
 const NearbyContainer = (props) => {
   const classes = useStyles();
 
-  return <div></div>;
+  return (
+    <div>
+      <Nearby />
+    </div>
+  );
 };
 
 export default NearbyContainer;

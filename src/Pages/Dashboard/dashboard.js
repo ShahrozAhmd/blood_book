@@ -4,6 +4,7 @@ import { Height } from "@material-ui/icons";
 import react, { Fragment } from "react";
 import Header from "../../Components/Header/header";
 import PostBox from "../../Components/Show Post/show-post-container";
+import NearbyBox from '../../Components/Nearby/nearby-container'
 import useStyles from "./dashboard-styles";
 
 function Dashboard(props) {
@@ -25,7 +26,7 @@ function Dashboard(props) {
               </Box>
             </Box>
             <Box className={classes.box} flexGrow={1}>
-              2
+            <NearbyBox/>
             </Box>
           </Box>
         </Container>
