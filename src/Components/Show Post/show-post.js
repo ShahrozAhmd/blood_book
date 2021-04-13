@@ -66,9 +66,8 @@ const ShowPost = (props) => {
         /> */}
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-              cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels.
+            One of my realtive is in danger and they need blood urgently, his blood group 
+            is rare and we have to face difficulties in arranging blood for him.
             </Typography>
           </CardContent>
           {/* Custom section 01 */}
