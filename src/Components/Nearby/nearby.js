@@ -2,7 +2,7 @@ import { Box } from "@material-ui/core";
 import react, { Fragment } from "react";
 import Paper from "@material-ui/core/Paper";
 import useStyles from "./nearby-styles";
-import ProfileChip from '../Profile Chip/profile-chip'
+import ProfileChip from "../Profile Chip/profile-chip";
 
 const Nearby = (props) => {
   const classes = useStyles();
@@ -11,12 +11,14 @@ const Nearby = (props) => {
     <Fragment>
       <Box display="flex" flexDirection="column" justifyContent="center">
         <Box>
-          <Paper elevation={3} className = {classes.root}>
-            <ProfileChip/>
+          <Paper elevation={3} className={classes.root}>
+            <ProfileChip />
           </Paper>
         </Box>
         <Box>
-          <Paper elevation={3} className = {classes.root}/>
+          <Paper elevation={3} className={classes.root}>
+            <ProfileChip hospital />
+          </Paper>
         </Box>
       </Box>
     </Fragment>
