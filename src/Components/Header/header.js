@@ -121,9 +121,9 @@ const Header = (props) => {
             Blood Book
           </Typography>
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
+            {/* <div className={classes.searchIcon}>
               <SearchIcon />
-            </div>
+            </div> */}
             <Search/>
           </div>
           <div className={classes.grow} />
