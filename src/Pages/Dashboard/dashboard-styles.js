@@ -2,15 +2,16 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   box: {
-    border: "5px solid skyblue",
+    // border: "5px solid skyblue",
     // width: "50%",
     // height: "100vh"
   },
 
   mainFeed: {
     // textAlign: "center",
-    border: "5px solid skyblue",
-    maxWidth:"70%"
+    // border: "5px solid skyblue",
+    maxWidth:"70%",
+    margin:"1%"
   },
   container: {
     // height: "100vh",
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
   },
   main: {
     // height: "100vh",
-    border: "5px solid orange",
+    // border: "5px solid orange",
     // width: "100%",
     // marginLeft: "10%",
     // marginRight: "10%",
