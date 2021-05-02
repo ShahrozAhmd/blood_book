@@ -1,15 +1,15 @@
 import React, { Fragment } from "react";
 // import classes from "./landing.module.css";
 import SignIn from "../../Components/SignIn/signin-form";
-import SignUp from '../../Components/Signup/signup-form'
+import SignUp from "../../Components/Signup/signup-form";
 import Container from "@material-ui/core/Container";
 import Search from "@material-ui/icons/Search";
 import logoImage from "../../assets/logo.png";
 import drImage from "../../assets/dr.png";
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import useStyles from './landing-styles'
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import useStyles from "./landing-styles";
 import {
   Box,
   CssBaseline,
@@ -18,7 +18,6 @@ import {
   Paper,
   Button,
 } from "@material-ui/core";
-
 
 const Landing = (props) => {
   const classes = useStyles();
@@ -49,7 +48,7 @@ const Landing = (props) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">SignUp</h2>
-              <SignUp/>
+            <SignUp />
           </div>
         </Fade>
       </Modal>
@@ -65,7 +64,7 @@ const Landing = (props) => {
           <Grid item>
             <Box mt={2}>
               <Button
-              onClick={handleOpen}
+                onClick={handleOpen}
                 variant="outlined"
                 color="primary"
                 className={classes.btn1}
