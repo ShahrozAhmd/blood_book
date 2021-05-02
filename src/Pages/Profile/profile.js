@@ -16,26 +16,14 @@ function Profile(props) {
       alignItems="center"
     >
       <Paper elevation={3} className={classes.card}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          style={{ height: "inherit" }}
-        >
+        <Box className={classes.btnBox}>
           <PersonAddIcon />
           <Typography variant="p">General</Typography>
         </Box>
       </Paper>
 
       <Paper elevation={3} className={classes.card}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          style={{ height: "inherit" }}
-        >
+        <Box className={classes.btnBox}>
           <AccessibleIcon />
           <Typography variant="p">Medical</Typography>
         </Box>

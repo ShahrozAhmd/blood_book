@@ -9,6 +9,13 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(16),
     height: theme.spacing(16),
   },
+  btnBox: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    height: "inherit",
+  },
 }));
 
 export default useStyles;
