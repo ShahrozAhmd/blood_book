@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     maxHeight: "100vh",
   },
+  iconBox: {
+    border: "1px solid grey",
+    padding: "1%",
+    margin: "2%",
+  },
 }));
 
 export default useStyles;
