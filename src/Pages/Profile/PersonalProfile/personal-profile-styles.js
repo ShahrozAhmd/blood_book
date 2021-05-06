@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     maxHeight: "100vh",
   },
-  iconBox: {
+  el: {
     border: "1px solid grey",
     padding: "1%",
     margin: "2%",

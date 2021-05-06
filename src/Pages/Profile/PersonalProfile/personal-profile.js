@@ -27,23 +27,38 @@ function PersonalProfile(props) {
               flexGrow={1}
             >
               Photo
+              <br />
+              Name
             </Box>
             <Box
               style={{ border: "1px solid red", padding: "3%" }}
               flexGrow={2}
             >
               <Box display="flex" justifyContent="space-around">
-                <Box className={classes.iconBox}>I1</Box>
-                <Box className={classes.iconBox}>I2</Box>
-                <Box className={classes.iconBox}>I3</Box>
-                <Box className={classes.iconBox}>I4</Box>
+                <Box className={classes.el}>I1</Box>
+                <Box className={classes.el}>I2</Box>
+                <Box className={classes.el}>I3</Box>
+                <Box className={classes.el}>I4</Box>
               </Box>
             </Box>
           </Box>
           {/* SECTION 02 ENDS HERE */}
 
-       
+          {/* SECTION 03 STARTS HERE */}
+          <Box
+            display="flex"
+            flexWrap="wrap"
+            flexDirection="column"
+            alignItems="flex-start"
+            style={{ border: "1px solid black", padding: "2%" }}
+          >
+            <p className={classes.el}>Email</p>
+            <p className={classes.el}>Phone Number</p>
+            <p className={classes.el}>Location</p>
+            <p className={classes.el}>About You</p>
+          </Box>
 
+          {/* SECTION 03 ENDS HERE */}
         </Paper>
       </Container>
     </Fragment>
