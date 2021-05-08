@@ -6,6 +6,10 @@ import Container from "@material-ui/core/Container";
 import { Box } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ProgressCircle from "../../../UI/Progress Circle/progress-circle";
+import ProfileImage from "../../../UI/ProfileImage/profile-image";
+import GoogleIcon from "@material-ui/icons/Google";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
 
 function PersonalProfile(props) {
   const classes = useStyles();
@@ -50,19 +54,25 @@ function PersonalProfile(props) {
               style={{ border: "1px solid green", padding: "3%" }}
               flexGrow={1}
             >
-              Photo
+              <ProfileImage />
               <br />
-              Name
+              First & Last Name
             </Box>
             <Box
               style={{ border: "1px solid red", padding: "3%" }}
               flexGrow={2}
             >
               <Box display="flex" justifyContent="space-around">
-                <Box className={classes.el}>I1</Box>
-                <Box className={classes.el}>I2</Box>
-                <Box className={classes.el}>I3</Box>
-                <Box className={classes.el}>I4</Box>
+                <Box className={classes.el}>
+                  <GoogleIcon />
+                </Box>
+                <Box className={classes.el}>
+                  <FacebookIcon />
+                </Box>
+                <Box className={classes.el}>
+                  <InstagramIcon />
+                </Box>
+                {/* <Box className={classes.el}>I4</Box> */}
               </Box>
             </Box>
           </Box>
