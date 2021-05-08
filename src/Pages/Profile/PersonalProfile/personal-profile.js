@@ -4,6 +4,8 @@ import useStyles from "./personal-profile-styles";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import { Box } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import ProgressCircle from "../../../UI/Progress Circle/progress-circle";
 
 function PersonalProfile(props) {
   const classes = useStyles();
@@ -19,7 +21,20 @@ function PersonalProfile(props) {
             justifyContent="space-between"
             style={{ border: "1px solid black", padding: "1%" }}
           >
-            <Box className={classes.el}>Profile Complete</Box>
+            <Box
+              display="flex"
+              justifyContent="space-evenly"
+              alignItems="center"
+            >
+              <Box>
+                <Typography style={{ fontSize: "0.8rem" }}>
+                  Your Profile:
+                </Typography>
+              </Box>
+              <Box>
+                <ProgressCircle />
+              </Box>
+            </Box>
             <Box className={classes.el}>Three dots</Box>
           </Box>
           {/* SECTION 01 ENDS HERE */}
