@@ -4,12 +4,11 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     margin: theme.spacing(1),
     width: "100%",
-    height: "100vh",
+    height: "100",
   },
   container: {
     border: "1px solid black",
     height: "100vh",
-    maxHeight: "100vh",
     overflow:"scroll"
   },
   el: {
