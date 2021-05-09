@@ -9,6 +9,9 @@ import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import GroupIcon from "@material-ui/icons/Group";
 import WcIcon from "@material-ui/icons/Wc";
+import CastForEducationIcon from "@material-ui/icons/CastForEducation";
+import WorkIcon from "@material-ui/icons/Work";
+import TranslateIcon from "@material-ui/icons/Translate";
 
 const setIcon = (args) => {
   switch (args) {
@@ -36,6 +39,15 @@ const setIcon = (args) => {
       break;
     case "gender":
       return <WcIcon />;
+      break;
+    case "education":
+      return <CastForEducationIcon />;
+      break;
+    case "languages":
+      return <TranslateIcon />;
+      break;
+    case "profession":
+      return <WorkIcon />;
       break;
 
     default:

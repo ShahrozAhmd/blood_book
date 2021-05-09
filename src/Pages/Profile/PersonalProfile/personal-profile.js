@@ -135,9 +135,15 @@ function PersonalProfile(props) {
             <Box
               style={{ border: "1px solid pink", padding: "3%", width: "50%" }}
             >
-              <p className={classes.el}>Education</p>
-              <p className={classes.el}>Profession</p>
-              <p className={classes.el}>Languages</p>
+              <Box className={classes.el}>
+                <InlineInfo icon="education" text="BSCS" />
+              </Box>
+              <Box className={classes.el}>
+                <InlineInfo icon="profession" text="Web Developer" />
+              </Box>
+              <Box className={classes.el}>
+                <InlineInfo icon="languages" text="English/ Urdu" />
+              </Box>
             </Box>
           </Box>
 
