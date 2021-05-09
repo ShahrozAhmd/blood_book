@@ -7,7 +7,7 @@ import Avatar from "@material-ui/core/Avatar";
 export default function ImageAvatars() {
   const classes = useStyles();
 
-  return (
+  return ( 
     <div className={classes.root}>
       <Avatar
         alt="Remy Sharp"

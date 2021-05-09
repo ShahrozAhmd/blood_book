@@ -118,10 +118,18 @@ function PersonalProfile(props) {
             <Box
               style={{ border: "1px solid red", padding: "3%", width: "50%" }}
             >
-              <p className={classes.el}>Age</p>
-              <p className={classes.el}>Date of Birth</p>
-              <p className={classes.el}>Gender</p>
-              <p className={classes.el}>Marital Status</p>
+              <Box className={classes.el}>
+                <InlineInfo icon="age" text="25" />
+              </Box>
+              <Box className={classes.el}>
+                <InlineInfo icon="dob" text="October 22, 2021" />
+              </Box>
+              <Box className={classes.el}>
+                <InlineInfo icon="gender" text="male" />
+              </Box>
+              <Box className={classes.el}>
+                <InlineInfo icon="maritalstatus" text="single" />
+              </Box>
             </Box>
 
             <Box

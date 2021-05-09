@@ -1,10 +1,14 @@
-import { Box } from "@material-ui/core";
 import React from "react";
+import { Box } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import EmailIcon from "@material-ui/icons/Email";
 import PhoneIcon from "@material-ui/icons/Phone";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import InfoIcon from "@material-ui/icons/Info";
-import Typography from "@material-ui/core/Typography";
+import PermIdentityIcon from "@material-ui/icons/PermIdentity";
+import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import GroupIcon from "@material-ui/icons/Group";
+import WcIcon from "@material-ui/icons/Wc";
 
 const setIcon = (args) => {
   switch (args) {
@@ -21,6 +25,19 @@ const setIcon = (args) => {
     case "about":
       return <InfoIcon />;
       break;
+    case "age":
+      return <PermIdentityIcon />;
+      break;
+    case "dob":
+      return <CalendarTodayIcon />;
+      break;
+    case "maritalstatus":
+      return <GroupIcon />;
+      break;
+    case "gender":
+      return <WcIcon />;
+      break;
+
     default:
       return null;
   }
