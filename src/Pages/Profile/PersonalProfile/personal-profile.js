@@ -7,6 +7,7 @@ import { Box } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ProgressCircle from "../../../UI/Progress Circle/progress-circle";
 import ProfileImage from "../../../UI/ProfileImage/profile-image";
+import InlineInfo from "../../../UI/InlineIconText/inline_icon_text";
 import GoogleIcon from "@material-ui/icons/Google";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -87,10 +88,24 @@ function PersonalProfile(props) {
             alignSelf="center"
             style={{ border: "1px solid black" }}
           >
-            <p className={classes.el}>Email</p>
-            <p className={classes.el}>Phone Number</p>
-            <p className={classes.el}>Location</p>
-            <p className={classes.el}>About You</p>
+            <Box className={classes.el}>
+              <InlineInfo icon="email" text="shahrozahmed286@gmail.com" />
+            </Box>
+            <Box className={classes.el}>
+              <InlineInfo icon="phone" text="123456789" />
+            </Box>
+            <Box className={classes.el}>
+              <InlineInfo icon="location" text="karachi" />
+            </Box>
+            <Box className={classes.el}>
+              <InlineInfo
+                icon="about"
+                text="Detailed-oriented, responsible, and committed Web Developer, with a get-it-done, 
+                on-time, and high-quality product spirit, and more than 3 years of experience defining 
+                requirements, designing, implementing, testing, and delivering versatile websites using
+                 various programming languages and technologies."
+              />
+            </Box>
           </Box>
           {/* SECTION 03 ENDS HERE */}
 
