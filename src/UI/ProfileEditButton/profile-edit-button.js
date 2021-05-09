@@ -8,7 +8,7 @@ const ProfileEditButton = (props) => {
     <div>
       <Box display="flex" justifyContent="flex-end">
         <IconButton color="secondary" aria-label="add an alarm">
-          <CreateIcon />
+          <CreateIcon onClick={props.clicked} />
         </IconButton>
       </Box>
     </div>

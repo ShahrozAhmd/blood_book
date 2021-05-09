@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     border: "1px solid black",
     height: "100vh",
-    overflow:"scroll"
+    overflow: "scroll",
   },
   el: {
     border: "1px solid grey",

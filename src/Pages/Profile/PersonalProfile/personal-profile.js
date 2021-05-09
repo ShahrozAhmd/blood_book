@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import useStyles from "./personal-profile-styles";
 import Paper from "@material-ui/core/Paper";
@@ -10,14 +10,25 @@ import ProgressCircle from "../../../UI/Progress Circle/progress-circle";
 import ProfileImage from "../../../UI/ProfileImage/profile-image";
 import InlineInfo from "../../../UI/InlineIconText/inline_icon_text";
 import ProfileEditButton from "../../../UI/ProfileEditButton/profile-edit-button";
+import ModalPopup from "../../../UI/Modal/modal";
 import GoogleIcon from "@material-ui/icons/Google";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 
-
 function PersonalProfile(props) {
   const classes = useStyles();
+  // code for modal
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Fragment>
       <CssBaseline />
@@ -46,7 +57,7 @@ function PersonalProfile(props) {
             </Box>
             <Box className={classes.el}>
               <IconButton color="secondary" aria-label="add an alarm">
-                <MoreVertIcon />
+                <MoreVertIcon onClick={handleOpen} />
               </IconButton>
             </Box>
           </Box>
@@ -96,7 +107,8 @@ function PersonalProfile(props) {
             alignSelf="center"
             style={{ border: "1px solid black" }}
           >
-            <ProfileEditButton />
+            <ProfileEditButton clicked={handleOpen} />
+
             <Box className={classes.el}>
               <InlineInfo icon="email" text="shahrozahmed286@gmail.com" />
             </Box>
@@ -127,7 +139,7 @@ function PersonalProfile(props) {
             <Box
               style={{ border: "1px solid red", padding: "3%", width: "50%" }}
             >
-              <ProfileEditButton />
+              <ProfileEditButton clicked={handleOpen} />
               <Box className={classes.el}>
                 <InlineInfo icon="age" text="25" />
               </Box>
@@ -145,7 +157,7 @@ function PersonalProfile(props) {
             <Box
               style={{ border: "1px solid pink", padding: "3%", width: "50%" }}
             >
-              <ProfileEditButton />
+              <ProfileEditButton clicked={handleOpen} />
               <Box className={classes.el}>
                 <InlineInfo icon="education" text="BSCS" />
               </Box>
@@ -160,6 +172,9 @@ function PersonalProfile(props) {
 
           {/* SECTION 04 ENDS HERE */}
         </Paper>
+
+        {/* modal rendering code execute on state change*/}
+        <ModalPopup open={open} handleClose={handleClose} />
       </Container>
     </Fragment>
   );
