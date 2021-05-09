@@ -5,13 +5,16 @@ import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import { Box } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 import ProgressCircle from "../../../UI/Progress Circle/progress-circle";
 import ProfileImage from "../../../UI/ProfileImage/profile-image";
 import InlineInfo from "../../../UI/InlineIconText/inline_icon_text";
+import ProfileEditButton from "../../../UI/ProfileEditButton/profile-edit-button";
 import GoogleIcon from "@material-ui/icons/Google";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import ProfileEditButton from "../../../UI/ProfileEditButton/profile-edit-button";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+
 
 function PersonalProfile(props) {
   const classes = useStyles();
@@ -41,7 +44,11 @@ function PersonalProfile(props) {
                 <ProgressCircle />
               </Box>
             </Box>
-            <Box className={classes.el}>Three dots</Box>
+            <Box className={classes.el}>
+              <IconButton color="secondary" aria-label="add an alarm">
+                <MoreVertIcon />
+              </IconButton>
+            </Box>
           </Box>
           {/* SECTION 01 ENDS HERE */}
 
