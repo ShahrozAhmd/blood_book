@@ -11,6 +11,7 @@ import InlineInfo from "../../../UI/InlineIconText/inline_icon_text";
 import GoogleIcon from "@material-ui/icons/Google";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
+import ProfileEditButton from "../../../UI/ProfileEditButton/profile-edit-button";
 
 function PersonalProfile(props) {
   const classes = useStyles();
@@ -88,6 +89,7 @@ function PersonalProfile(props) {
             alignSelf="center"
             style={{ border: "1px solid black" }}
           >
+            <ProfileEditButton />
             <Box className={classes.el}>
               <InlineInfo icon="email" text="shahrozahmed286@gmail.com" />
             </Box>
@@ -118,6 +120,7 @@ function PersonalProfile(props) {
             <Box
               style={{ border: "1px solid red", padding: "3%", width: "50%" }}
             >
+              <ProfileEditButton />
               <Box className={classes.el}>
                 <InlineInfo icon="age" text="25" />
               </Box>
@@ -135,6 +138,7 @@ function PersonalProfile(props) {
             <Box
               style={{ border: "1px solid pink", padding: "3%", width: "50%" }}
             >
+              <ProfileEditButton />
               <Box className={classes.el}>
                 <InlineInfo icon="education" text="BSCS" />
               </Box>
