@@ -12,6 +12,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "10px",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    width: "40%",
+    height: "50%",
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center",
+    flexDirection:"column",
+    
+  },
+  button: {
+    margin: theme.spacing(1),
+    width:"100%"
   },
 }));
 

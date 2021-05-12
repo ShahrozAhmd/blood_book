@@ -1,8 +1,11 @@
 import React from "react";
+import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import useStyles from "./modal-styles";
+import Button from '@material-ui/core/Button';
+import DoneIcon from '@material-ui/icons/Done';
 
 function ModalPopup(props) {
   const classes = useStyles();
@@ -22,10 +25,15 @@ function ModalPopup(props) {
       >
         <Fade in={props.open}>
           <div className={classes.modalpaper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">
-              react-transition-group animates me.
-            </p>
+            <ProfileEditForm />
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              startIcon={<DoneIcon />}
+            >
+              UPDATE
+            </Button>
           </div>
         </Fade>
       </Modal>
