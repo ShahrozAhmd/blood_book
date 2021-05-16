@@ -175,6 +175,8 @@ function Profile(props) {
 
         {/* modal rendering code execute on state change*/}
         <ModalPopup open={open} handleClose={handleClose} />
+
+        <CheckDonorEligability/>
       </Container>
     </Fragment>
   );
