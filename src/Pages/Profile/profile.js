@@ -10,11 +10,14 @@ import ProfileImage from "../../UI/ProfileImage/profile-image";
 import InlineInfo from "../../UI/InlineIconText/inline_icon_text";
 import ProfileEditButton from "../../UI/ProfileEditButton/profile-edit-button";
 import ModalPopup from "../../UI/Modal/modal";
-import CheckDonorEligability from '../../Components/EligableDonor/eligable-donor'
+import CheckDonorEligability from "../../Components/EligableDonor/eligable-donor";
 import GoogleIcon from "@material-ui/icons/Google";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Button from "@material-ui/core/Button";
+import DoneIcon from "@material-ui/icons/Done";
+import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form";
 
 function Profile(props) {
   const classes = useStyles();
@@ -173,11 +176,20 @@ function Profile(props) {
           {/* SECTION 04 ENDS HERE */}
         </Paper>
 
-        {/* modal rendering code execute on state change*/}
-        <ModalPopup open={open} handleClose={handleClose} />
-
-        <CheckDonorEligability/>
+        <CheckDonorEligability />
       </Container>
+      {/* modal rendering code execute on state change*/}
+      <ModalPopup open={open} handleClose={handleClose}>
+        <ProfileEditForm />
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.button}
+          startIcon={<DoneIcon />}
+        >
+          UPDATE
+        </Button>
+      </ModalPopup>
     </Fragment>
   );
 }

@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     padding: "1%",
     margin: "2%",
   },
+  button: {
+    margin: theme.spacing(1),
+    width:"100%"
+  },
 }));
 
 export default useStyles;

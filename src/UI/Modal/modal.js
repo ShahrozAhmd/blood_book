@@ -1,11 +1,8 @@
 import React from "react";
-import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import useStyles from "./modal-styles";
-import Button from '@material-ui/core/Button';
-import DoneIcon from '@material-ui/icons/Done';
 
 function ModalPopup(props) {
   const classes = useStyles();
@@ -24,17 +21,8 @@ function ModalPopup(props) {
         }}
       >
         <Fade in={props.open}>
-          <div className={classes.modalpaper}>
-            <ProfileEditForm />
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              startIcon={<DoneIcon />}
-            >
-              UPDATE
-            </Button>
-          </div>
+          <div className={classes.modalpaper}>{props.children && props.children}</div>
+          
         </Fade>
       </Modal>
     </div>

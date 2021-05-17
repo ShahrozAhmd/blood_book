@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import useStyles from "./eligable-donor-styles";
 import { Box } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import DriveFileRenameOutlineIcon from "@material-ui/icons/DriveFileRenameOutline";
 import Button from "@material-ui/core/Button";
+import ModalPopup from "../../UI/Modal/modal";
 
 function EligableDonor(props) {
   const classes = useStyles();
+  // code for modal
+  const [open, setOpen] = useState(false);
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div className={classes.root}>
       <Paper>
@@ -25,6 +35,7 @@ function EligableDonor(props) {
           </Box>
           <Box>
             <Button
+              onClick={handleOpen}
               variant="contained"
               color="secondary"
               className={classes.button}
@@ -34,7 +45,11 @@ function EligableDonor(props) {
             </Button>
           </Box>
         </Box>
+        <ModalPopup open={open} handleClose={handleClose}>
+        {"component for donor eligability will display here "}
+      </ModalPopup>
       </Paper>
+     
     </div>
   );
 }
