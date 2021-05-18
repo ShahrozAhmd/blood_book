@@ -10,7 +10,7 @@ import ProfileImage from "../../UI/ProfileImage/profile-image";
 import InlineInfo from "../../UI/InlineIconText/inline_icon_text";
 import ProfileEditButton from "../../UI/ProfileEditButton/profile-edit-button";
 import ModalPopup from "../../UI/Modal/modal";
-import CheckDonorEligability from "../../Components/EligableDonor/eligable-donor";
+import CheckDonorEligibility from "../../Components/EligibileDonor/eligibile -donor";
 import GoogleIcon from "@material-ui/icons/Google";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -176,7 +176,7 @@ function Profile(props) {
           {/* SECTION 04 ENDS HERE */}
         </Paper>
 
-        <CheckDonorEligability />
+        <CheckDonorEligibility />
       </Container>
       {/* modal rendering code execute on state change*/}
       <ModalPopup open={open} handleClose={handleClose}>
