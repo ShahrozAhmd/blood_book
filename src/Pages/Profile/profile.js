@@ -175,11 +175,12 @@ function Profile(props) {
 
           {/* SECTION 04 ENDS HERE */}
         </Paper>
-
+        {/* Donor availability row code */}
         <CheckDonorEligibility />
       </Container>
       {/* modal rendering code execute on state change*/}
       <ModalPopup open={open} handleClose={handleClose}>
+        {/* children for modal , specific for form section data updation */}
         <ProfileEditForm />
         <Button
           variant="contained"

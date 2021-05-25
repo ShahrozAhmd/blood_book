@@ -1,8 +1,12 @@
 import React from "react";
+import 'antd/dist/antd.css'
 // import useStyles from './Eligibile-donor-form-styles'
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { Button } from 'antd';
+import MButton from "@material-ui/core/Button";
+
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -29,6 +33,9 @@ function EligibileDonorForm(props) {
         Its a quick test, If you have any of these Diseases, you are not Fine to
         donate blood to anyone, must Check the diseases you have.
       </Typography>
+      
+      <Button type="primary">Primary Button</Button>
+      
     </div>
   );
 }
