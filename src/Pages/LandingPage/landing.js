@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useState } from "react";
 // import classes from "./landing.module.css";
 import SignIn from "../../Components/SignIn/signin-form";
 import SignUp from "../../Components/Signup/signup-form";
@@ -21,7 +21,7 @@ import {
 
 const Landing = (props) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);

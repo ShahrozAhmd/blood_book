@@ -6,13 +6,18 @@ import Typography from "@material-ui/core/Typography";
 import DriveFileRenameOutlineIcon from "@material-ui/icons/DriveFileRenameOutline";
 import Button from "@material-ui/core/Button";
 import ModalPopup from "../../UI/Modal/modal";
-import EligibileDonorForm from '../EligibileDonorForm/Eligibile-donor-form'
+import EligibileDonorForm from "../EligibileDonorForm/Eligibile-donor-form";
+import EligibileDonorResult from "../EligibilityResult/eligiblity-result";
 
 function EligableDonor(props) {
   const classes = useStyles();
   // code for modal
   const [open, setOpen] = useState(false);
+  const [eligiblity, setEligiblity] = useState(false);
 
+  const isEligible = () => {
+    setEligiblity(true);
+  };
   const handleOpen = () => {
     setOpen(true);
   };
@@ -20,6 +25,7 @@ function EligableDonor(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
   return (
     <div className={classes.root}>
       <Paper>
@@ -42,15 +48,19 @@ function EligableDonor(props) {
               className={classes.button}
               startIcon={<DriveFileRenameOutlineIcon />}
             >
-              Check Eligability
+              {eligiblity ? "Edit Eligibility" : "Check Eligibility"}
             </Button>
           </Box>
         </Box>
+        {/* this modal here will popoup on click the button */}
         <ModalPopup open={open} handleClose={handleClose}>
-        <EligibileDonorForm/>
-      </ModalPopup>
+          {eligiblity ? (
+            <EligibileDonorResult />
+          ) : (
+            <EligibileDonorForm setEligiblity={isEligible} />
+          )}
+        </ModalPopup>
       </Paper>
-     
     </div>
   );
 }
