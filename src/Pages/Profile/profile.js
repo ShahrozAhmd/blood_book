@@ -38,18 +38,13 @@ function Profile(props) {
       <Container maxWidth="md" className={classes.container}>
         <Paper elevation={3} className={classes.paper}>
           {/* SECTION 01 STARTS HERE */}
-          <Box
-            display="flex"
-            flexWrap="wrap"
-            justifyContent="space-between"
-            style={{ border: "1px solid black", padding: "1%" }}
-          >
+          <Box display="flex" flexWrap="wrap" justifyContent="space-between">
             <Box
               display="flex"
               justifyContent="space-evenly"
               alignItems="center"
             >
-              <Box>
+              <Box style={{ padding: "5px" }}>
                 <Typography style={{ fontSize: "0.8rem" }}>
                   Your Profile:
                 </Typography>
@@ -58,41 +53,39 @@ function Profile(props) {
                 <ProgressCircle />
               </Box>
             </Box>
+            {/*
+            This is commented for now , it is the 3 dots setting option
             <Box className={classes.el}>
               <IconButton color="secondary" aria-label="add an alarm">
                 <MoreVertIcon onClick={handleOpen} />
               </IconButton>
-            </Box>
+            </Box> */}
           </Box>
           {/* SECTION 01 ENDS HERE */}
 
           {/* SECTION 02 STARTS HERE */}
           <Box
             display="flex"
+            flexDirection="column"
             flexWrap="wrap"
-            justifyContent="space-between"
-            style={{ border: "1px solid black", padding: "5%" }}
           >
-            <Box
-              style={{ border: "1px solid green", padding: "3%" }}
-              flexGrow={1}
-            >
+            <Box style={{ padding: "2%" }} >
               <ProfileImage />
               <br />
-              First & Last Name
+              <Typography variant="h6" gutterBottom>
+                USER NAME
+              </Typography>
             </Box>
-            <Box
-              style={{ border: "1px solid red", padding: "3%" }}
-              flexGrow={2}
-            >
-              <Box display="flex" justifyContent="space-around">
-                <Box className={classes.el}>
+
+            <Box>
+              <Box display="flex" justifyContent="flex-start">
+                <Box >
                   <GoogleIcon />
                 </Box>
-                <Box className={classes.el}>
+                <Box >
                   <FacebookIcon />
                 </Box>
-                <Box className={classes.el}>
+                <Box >
                   <InstagramIcon />
                 </Box>
                 {/* <Box className={classes.el}>I4</Box> */}
@@ -108,20 +101,20 @@ function Profile(props) {
             flexDirection="column"
             alignContent="flex-start"
             alignSelf="center"
-            style={{ border: "1px solid black" }}
+            style={{ padding:"2%" }}
           >
             <ProfileEditButton clicked={handleOpen} />
-
-            <Box className={classes.el}>
+          
+            <Box >
               <InlineInfo icon="email" text="shahrozahmed286@gmail.com" />
             </Box>
-            <Box className={classes.el}>
+            <Box >
               <InlineInfo icon="phone" text="123456789" />
             </Box>
-            <Box className={classes.el}>
+            <Box >
               <InlineInfo icon="location" text="karachi" />
             </Box>
-            <Box className={classes.el}>
+            <Box >
               <InlineInfo
                 icon="about"
                 text="Detailed-oriented, responsible, and committed Web Developer, with a get-it-done, 
@@ -137,37 +130,46 @@ function Profile(props) {
           <Box
             display="flex"
             flexWrap="wrap"
-            style={{ border: "1px solid blue", padding: "3%" }}
+            style={{ padding: "2%" }}
           >
             <Box
-              style={{ border: "1px solid red", padding: "3%", width: "50%" }}
+              style={{width: "50%" }}
             >
+                <Typography variant="h6" gutterBottom>
+                PERSONAL:
+              </Typography>
               <ProfileEditButton clicked={handleOpen} />
-              <Box className={classes.el}>
+              <Box >
                 <InlineInfo icon="age" text="25" />
               </Box>
-              <Box className={classes.el}>
+              <Box >
                 <InlineInfo icon="dob" text="October 22, 2021" />
               </Box>
-              <Box className={classes.el}>
+              <Box >
                 <InlineInfo icon="gender" text="male" />
               </Box>
-              <Box className={classes.el}>
+              <Box >
                 <InlineInfo icon="maritalstatus" text="single" />
+              </Box>
+              <Box >
+                <InlineInfo icon="bloodgroup" text="A+" />
               </Box>
             </Box>
 
             <Box
-              style={{ border: "1px solid pink", padding: "3%", width: "50%" }}
+              style={{  width: "50%" }}
             >
+                <Typography variant="h6" gutterBottom>
+                PROFESSIONAL:
+              </Typography>
               <ProfileEditButton clicked={handleOpen} />
-              <Box className={classes.el}>
+              <Box >
                 <InlineInfo icon="education" text="BSCS" />
               </Box>
-              <Box className={classes.el}>
+              <Box >
                 <InlineInfo icon="profession" text="Web Developer" />
               </Box>
-              <Box className={classes.el}>
+              <Box >
                 <InlineInfo icon="languages" text="English/ Urdu" />
               </Box>
             </Box>

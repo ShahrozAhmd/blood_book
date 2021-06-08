@@ -7,9 +7,9 @@ const useStyles = makeStyles((theme) => ({
     height: "100",
   },
   container: {
-    border: "1px solid black",
+    // border: "1px solid black",
     height: "100vh",
-    overflow: "scroll",
+    // overflow: "scroll",
   },
   el: {
     border: "1px solid grey",
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
-    width:"100%"
+    width: "100%",
   },
 }));
 

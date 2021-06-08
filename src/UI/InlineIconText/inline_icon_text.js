@@ -12,6 +12,7 @@ import WcIcon from "@material-ui/icons/Wc";
 import CastForEducationIcon from "@material-ui/icons/CastForEducation";
 import WorkIcon from "@material-ui/icons/Work";
 import TranslateIcon from "@material-ui/icons/Translate";
+import OpacityIcon from '@material-ui/icons/Opacity';
 
 const setIcon = (args) => {
   switch (args) {
@@ -49,7 +50,10 @@ const setIcon = (args) => {
     case "profession":
       return <WorkIcon />;
       break;
-
+      case "bloodgroup":
+        return <OpacityIcon />;
+        break;
+  
     default:
       return null;
   }
