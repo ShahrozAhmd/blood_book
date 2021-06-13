@@ -19,15 +19,17 @@ import Button from "@material-ui/core/Button";
 import DoneIcon from "@material-ui/icons/Done";
 import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form";
 import { useDispatch, useSelector } from 'react-redux'
-import {Add, Sub} from '../../store/actions/auth_action'
+import {signUp} from '../../store/actions/auth_action'
 
 function Profile(props) {
-const stateValue = useSelector(state => state.value);
+  const email = 'shahrozahmed286@gmail.com';
+  const pass = "12345";
+const stateValue = useSelector(state => state.authData);
 const dispatch = useDispatch();
 console.log(stateValue)
 
 const setValue = ()=>{
-  dispatch(Add());
+  dispatch(signUp(email,pass));
 }
 
   const classes = useStyles();

@@ -1,3 +1,4 @@
-export const ADD = "ADD";
-export const SUB = "SUB";
+export const SIGNIN = "SIGNIN";
+export const SIGNUP = "SIGNUP";
+
 

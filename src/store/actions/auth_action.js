@@ -1,13 +1,21 @@
 import * as actionType from './action_types'
 
-export const Add = () =>{
+export const signIn = (email,password) =>{
     return{
-        type:actionType.ADD
+        type:actionType.SIGNIN,
+        payload:{
+            email:email,
+            password:password,
+        }
     }
 }
 
-export const Sub = () =>{
+export const signUp = (email,password) =>{
     return{
-        type:actionType.SUB
+        type:actionType.SIGNUP,
+        payload:{
+            email:email,
+            password:password,
+        }
     }
 }
