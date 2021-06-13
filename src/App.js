@@ -7,9 +7,9 @@ import Profile from './Pages/Profile/profile'
 function App() {
   return (
     <Fragment>
-        {/* <Landing/>
-        <Dashboard/> */}
-        <Profile/>
+        <Landing/>
+        {/* <Dashboard/>  */}
+        {/* <Profile/> */}
     </Fragment>
   );
 }

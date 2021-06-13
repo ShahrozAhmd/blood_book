@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState,useEffect } from "react";
 import useStyles from "./profile-styles";
 import Paper from "@material-ui/core/Paper";
 import { Box, Typography } from "@material-ui/core";
@@ -18,8 +18,18 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import DoneIcon from "@material-ui/icons/Done";
 import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form";
+import { useDispatch, useSelector } from 'react-redux'
+import {Add, Sub} from '../../store/actions/auth_action'
 
 function Profile(props) {
+const stateValue = useSelector(state => state.value);
+const dispatch = useDispatch();
+console.log(stateValue)
+
+const setValue = ()=>{
+  dispatch(Add());
+}
+
   const classes = useStyles();
   // code for modal
   const [open, setOpen] = useState(false);
@@ -36,6 +46,7 @@ function Profile(props) {
     <Fragment>
       <CssBaseline />
       <Container maxWidth="md" className={classes.container}>
+        <button onClick={setValue}>Click Me</button>
         <Paper elevation={3} className={classes.paper}>
           {/* SECTION 01 STARTS HERE */}
           <Box display="flex" flexWrap="wrap" justifyContent="space-between">

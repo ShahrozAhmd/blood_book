@@ -1,4 +1,4 @@
-import React, { Fragment,useState } from "react";
+import React, { Fragment, useState } from "react";
 // import classes from "./landing.module.css";
 import SignIn from "../../Components/SignIn/signin-form";
 import SignUp from "../../Components/Signup/signup-form";
@@ -112,72 +112,6 @@ const Landing = (props) => {
           </Grid>
         </Grid>
       </Container>
-
-      {/* <Container >
-        <Grid container justify = 'center' spacing ={3}>
-          <Grid item xs={12} xl={3} sm={12} md={6} lg={3}>
-            <Paper>
-              <Box p = {3}>
-                <Typography variant={"h3"}>Hello World</Typography>
-                <Typography variant={"p"}>This is a paragraph</Typography>
-                <br/>
-                <Button variant= "contained" color="primary">
-                  Click
-                </Button>
-              </Box>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} xl={3} sm={12} md={6} lg={3}>
-            <Paper>
-              <Box p = {3}>
-                <Typography variant={"h3"}>Hello World</Typography>
-                <Typography variant={"p"}>This is a paragraph</Typography>
-                <br/>
-                <Button variant= "contained" color="primary">
-                  Click
-                </Button>
-              </Box>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} xl={3} sm={12} md={6} lg={3}>
-            <Paper>
-              <Box p = {3}>
-                <Typography variant={"h3"}>Hello World</Typography>
-                <Typography variant={"p"}>This is a paragraph</Typography>
-                <br/>
-                <Button variant= "contained" color="primary">
-                  Click
-                </Button>
-              </Box>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} xl={3} sm={12} md={6} lg={3}>
-            <Paper>
-              <Box p = {3}>
-                <Typography variant={"h3"}>Hello World</Typography>
-                <Typography variant={"p"}>This is a paragraph</Typography>
-                <br/>
-                <Button variant= "contained" color="primary">
-                  Click
-                </Button>
-              </Box>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container> */}
-
-      {/* <Container className={classes.container} maxWidth="xl">
-        <Box className={classes.columns}>
-          <Box
-            style={{ border: "1px solid black", width: "50%", height: "80%" }}
-            // m={2} p={2}
-          ></Box>
-          <Box
-            style={{ border: "1px solid green", width: "50%", height: "80%" }}
-            m={2}
-          ></Box>
-        </Box>
-      </Container> */}
     </Fragment>
   );
 };
