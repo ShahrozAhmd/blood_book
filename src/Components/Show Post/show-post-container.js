@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import useStyles from "./show-post-styles";
 import ShowPost from "./show-post";
 

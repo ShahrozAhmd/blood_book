@@ -1,7 +1,7 @@
 import CreatePost from "../../Components/Create Post/create-post-container";
 import { Box, Container, CssBaseline, Grid } from "@material-ui/core";
 import { Height } from "@material-ui/icons";
-import react, { Fragment } from "react";
+import React, { Fragment } from "react";
 import Header from "../../Components/Header/header";
 import PostBox from "../../Components/Show Post/show-post-container";
 import NearbyBox from '../../Components/Nearby/nearby-container'

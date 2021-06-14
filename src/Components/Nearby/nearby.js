@@ -1,5 +1,5 @@
 import { Box, Typography } from "@material-ui/core";
-import react, { Fragment } from "react";
+import React, { Fragment } from "react";
 import Paper from "@material-ui/core/Paper";
 import useStyles from "./nearby-styles";
 import ProfileChip from "../Profile Chip/profile-chip";

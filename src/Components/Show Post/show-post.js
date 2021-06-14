@@ -1,4 +1,4 @@
-import react, { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import useStyles from "./show-post-styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";

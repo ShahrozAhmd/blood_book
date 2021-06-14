@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import useStyles from "./profile-chip-styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
