@@ -1,8 +1,8 @@
 import * as actionType from './action_types'
 
-export const signIn = (email,password) =>{
+ const signInWithEmail = (email,password) =>{
     return{
-        type:actionType.SIGNIN,
+        type:actionType.SIGN_IN_WITH_EMAIL,
         payload:{
             email:email,
             password:password,
@@ -10,12 +10,16 @@ export const signIn = (email,password) =>{
     }
 }
 
-export const signUp = (email,password) =>{
+const signUpWithEmail = (email,password) =>{
     return{
-        type:actionType.SIGNUP,
+        type:actionType.SIGN_UP_WITH_EMAIL,
         payload:{
             email:email,
             password:password,
         }
     }
 }
+
+
+
+export{signInWithEmail,signUpWithEmail}

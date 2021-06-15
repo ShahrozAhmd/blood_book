@@ -5,46 +5,19 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box } from "@material-ui/core";
+import useStyles from "./signin-form-styles";
+import {   Typography, Box } from "@material-ui/core";
+import Google from "@material-ui/icons/Google";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    // height: "100vh",
-   
-  },
-  // text:{
-  //   backgroundColor:"pink",
-  //   borderTopColour:"green"
-  // },
-  form: {
-    width: "60%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  btn2: {
-    boxSizing: "border-box",
-    backgroundColor: "#17d9f7",
-    backgroundImage: "linear-gradient(90deg, #17d9f7 0%, #4e21ff 100%)",
-    color: "white",
-    border: "none",
-    "&:hover": {
-      border: "none",
-    },
-  },
 
-}));
-
-export default function SignInSide() {
+const SignInForm = (props) => {
   const classes = useStyles();
 
   return (
     <form className={classes.form} noValidate>
       <Box>
         <TextField
-        className = {classes.text}
+          className={classes.text}
           variant="outlined"
           margin="normal"
           required
@@ -78,9 +51,21 @@ export default function SignInSide() {
         fullWidth
         variant="contained"
         color="primary"
-        className={classes.submit + " " + classes.btn2}
+        className={classes.btn}
       >
         Sign In
+      </Button>
+
+      <Typography variant="h5" style={{textAlign:"center"}}>Or</Typography>
+
+      <Button
+        variant="contained"
+        color="secondary"
+        fullWidth
+        className={classes.btn + " " + classes.googleBtn}
+        startIcon={<Google />}
+      >
+        SignIn With Google
       </Button>
       <Grid container>
         <Grid item xs>
@@ -91,4 +76,5 @@ export default function SignInSide() {
       </Grid>
     </form>
   );
-}
+};
+export default SignInForm;

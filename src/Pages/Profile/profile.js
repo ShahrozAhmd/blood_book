@@ -1,4 +1,4 @@
-import React, { Fragment, useState,useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import useStyles from "./profile-styles";
 import Paper from "@material-ui/core/Paper";
 import { Box, Typography } from "@material-ui/core";
@@ -18,20 +18,8 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import DoneIcon from "@material-ui/icons/Done";
 import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form";
-import { useDispatch, useSelector } from 'react-redux'
-import {signUp} from '../../store/actions/auth_action'
 
 function Profile(props) {
-  const email = 'shahrozahmed286@gmail.com';
-  const pass = "12345";
-const stateValue = useSelector(state => state.authData);
-const dispatch = useDispatch();
-console.log(stateValue)
-
-const setValue = ()=>{
-  dispatch(signUp(email,pass));
-}
-
   const classes = useStyles();
   // code for modal
   const [open, setOpen] = useState(false);
@@ -48,7 +36,6 @@ const setValue = ()=>{
     <Fragment>
       <CssBaseline />
       <Container maxWidth="md" className={classes.container}>
-        <button onClick={setValue}>Click Me</button>
         <Paper elevation={3} className={classes.paper}>
           {/* SECTION 01 STARTS HERE */}
           <Box display="flex" flexWrap="wrap" justifyContent="space-between">
@@ -77,12 +64,8 @@ const setValue = ()=>{
           {/* SECTION 01 ENDS HERE */}
 
           {/* SECTION 02 STARTS HERE */}
-          <Box
-            display="flex"
-            flexDirection="column"
-            flexWrap="wrap"
-          >
-            <Box style={{ padding: "2%" }} >
+          <Box display="flex" flexDirection="column" flexWrap="wrap">
+            <Box style={{ padding: "2%" }}>
               <ProfileImage />
               <br />
               <Typography variant="h6" gutterBottom>
@@ -92,13 +75,13 @@ const setValue = ()=>{
 
             <Box>
               <Box display="flex" justifyContent="flex-start">
-                <Box >
+                <Box>
                   <GoogleIcon />
                 </Box>
-                <Box >
+                <Box>
                   <FacebookIcon />
                 </Box>
-                <Box >
+                <Box>
                   <InstagramIcon />
                 </Box>
                 {/* <Box className={classes.el}>I4</Box> */}
@@ -114,20 +97,20 @@ const setValue = ()=>{
             flexDirection="column"
             alignContent="flex-start"
             alignSelf="center"
-            style={{ padding:"2%" }}
+            style={{ padding: "2%" }}
           >
             <ProfileEditButton clicked={handleOpen} />
-          
-            <Box >
+
+            <Box>
               <InlineInfo icon="email" text="shahrozahmed286@gmail.com" />
             </Box>
-            <Box >
+            <Box>
               <InlineInfo icon="phone" text="123456789" />
             </Box>
-            <Box >
+            <Box>
               <InlineInfo icon="location" text="karachi" />
             </Box>
-            <Box >
+            <Box>
               <InlineInfo
                 icon="about"
                 text="Detailed-oriented, responsible, and committed Web Developer, with a get-it-done, 
@@ -140,49 +123,41 @@ const setValue = ()=>{
           {/* SECTION 03 ENDS HERE */}
 
           {/* SECTION 04 STARTS HERE */}
-          <Box
-            display="flex"
-            flexWrap="wrap"
-            style={{ padding: "2%" }}
-          >
-            <Box
-              style={{width: "50%" }}
-            >
-                <Typography variant="h6" gutterBottom>
+          <Box display="flex" flexWrap="wrap" style={{ padding: "2%" }}>
+            <Box style={{ width: "50%" }}>
+              <Typography variant="h6" gutterBottom>
                 PERSONAL:
               </Typography>
               <ProfileEditButton clicked={handleOpen} />
-              <Box >
+              <Box>
                 <InlineInfo icon="age" text="25" />
               </Box>
-              <Box >
+              <Box>
                 <InlineInfo icon="dob" text="October 22, 2021" />
               </Box>
-              <Box >
+              <Box>
                 <InlineInfo icon="gender" text="male" />
               </Box>
-              <Box >
+              <Box>
                 <InlineInfo icon="maritalstatus" text="single" />
               </Box>
-              <Box >
+              <Box>
                 <InlineInfo icon="bloodgroup" text="A+" />
               </Box>
             </Box>
 
-            <Box
-              style={{  width: "50%" }}
-            >
-                <Typography variant="h6" gutterBottom>
+            <Box style={{ width: "50%" }}>
+              <Typography variant="h6" gutterBottom>
                 PROFESSIONAL:
               </Typography>
               <ProfileEditButton clicked={handleOpen} />
-              <Box >
+              <Box>
                 <InlineInfo icon="education" text="BSCS" />
               </Box>
-              <Box >
+              <Box>
                 <InlineInfo icon="profession" text="Web Developer" />
               </Box>
-              <Box >
+              <Box>
                 <InlineInfo icon="languages" text="English/ Urdu" />
               </Box>
             </Box>

@@ -1,4 +1,6 @@
-export const SIGNIN = "SIGNIN";
-export const SIGNUP = "SIGNUP";
+export const SIGN_IN_WITH_EMAIL= "SIGN_IN_WITH_EMAIL";
+export const SIGN_UP_WITH_EMAIL = "SIGN_UP_WITH_EMAIL";
+export const SIGN_IN_WITH_GOOGLE= "SIGN_IN_WITH_GOOGLE";
+export const SIGN_UP_WITH_GOOGLE = "SIGN_UP_WITH_GOOGLE";
 
 

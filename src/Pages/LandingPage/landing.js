@@ -18,11 +18,17 @@ import {
   Paper,
   Button,
 } from "@material-ui/core";
+import { useDispatch, useSelector } from 'react-redux'
+import {signInWithEmail, signUpWithEmail} from '../../store/actions/auth_action'
 
 const Landing = (props) => {
   const classes = useStyles();
+  
+  // STATES STARTS HERE>>>
   const [open, setOpen] = useState(false);
+ // STATES ENDS HERE>>>
 
+//HANDLERS
   const handleOpen = () => {
     setOpen(true);
   };
@@ -30,6 +36,8 @@ const Landing = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+
   return (
     <Fragment>
       <CssBaseline />
