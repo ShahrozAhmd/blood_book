@@ -47,19 +47,6 @@ export default function SignUp() {
           margin="normal"
           required
           fullWidth
-          type="text"
-          label="User Name"
-          name="name"
-          autoFocus
-        />
-      </Box>
-      <Box>
-        <TextField
-          className={classes.text}
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
           id="email"
           label="Email Address"
           name="email"
