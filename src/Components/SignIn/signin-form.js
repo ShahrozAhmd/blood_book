@@ -66,6 +66,7 @@ const SignInForm = (props) => {
         fullWidth
         className={classes.btn + " " + classes.googleBtn}
         startIcon={<Google />}
+        onClick={props.googleSignIn}
       >
         SignIn With Google
       </Button>

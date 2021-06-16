@@ -18,9 +18,9 @@ firebase.initializeApp(firebaseConfig);
 
 //auth instance provided by firebase SDK
 const firebaseAuth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
 
 
 
-
-export default firebaseAuth;
+export  {firebaseAuth, provider};
 

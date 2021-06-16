@@ -18,22 +18,26 @@ import {
   Paper,
   Button,
 } from "@material-ui/core";
-import { useDispatch, useSelector } from 'react-redux'
-import {signInWithEmail, signUpWithEmail} from '../../store/actions/auth_action'
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInWithEmail,
+  signUpWithEmail,
+  signInWithGoogle,
+} from "../../store/actions/auth_action";
 
 const Landing = (props) => {
   const classes = useStyles();
-  
+  const dispatch = useDispatch();
+
   // STATES STARTS HERE>>>
   const [open, setOpen] = useState(false);
 
-const [email, setEmail] = useState(null);
-const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
+  // STATES ENDS HERE>>>
 
- // STATES ENDS HERE>>>
-
-//HANDLERS
+  //HANDLERS
   const handleOpen = () => {
     setOpen(true);
   };
@@ -42,6 +46,9 @@ const [password, setPassword] = useState(null);
     setOpen(false);
   };
 
+  const googleSignIn = () => {
+    dispatch(signInWithGoogle());
+  };
 
   return (
     <Fragment>
@@ -116,7 +123,7 @@ const [password, setPassword] = useState(null);
               </Typography>
             </Grid>
             <Grid item>
-              <SignIn />
+              <SignIn googleSignIn={googleSignIn} />
             </Grid>
           </Grid>
 
