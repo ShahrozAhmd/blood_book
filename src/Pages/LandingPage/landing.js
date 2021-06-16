@@ -26,6 +26,11 @@ const Landing = (props) => {
   
   // STATES STARTS HERE>>>
   const [open, setOpen] = useState(false);
+
+const [email, setEmail] = useState(null);
+const [password, setPassword] = useState(null);
+
+
  // STATES ENDS HERE>>>
 
 //HANDLERS

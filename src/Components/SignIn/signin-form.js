@@ -6,9 +6,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./signin-form-styles";
-import {   Typography, Box } from "@material-ui/core";
+import { Typography, Box } from "@material-ui/core";
 import Google from "@material-ui/icons/Google";
-
 
 const SignInForm = (props) => {
   const classes = useStyles();
@@ -46,6 +45,7 @@ const SignInForm = (props) => {
         control={<Checkbox value="remember" color="primary" />}
         label="Remember me"
       />
+      {/* Sign in with email button */}
       <Button
         type="submit"
         fullWidth
@@ -56,8 +56,10 @@ const SignInForm = (props) => {
         Sign In
       </Button>
 
-      <Typography variant="h5" style={{textAlign:"center"}}>Or</Typography>
-
+      <Typography variant="h5" style={{ textAlign: "center" }}>
+        Or
+      </Typography>
+      {/* Sign in with google button */}
       <Button
         variant="contained"
         color="secondary"
@@ -67,6 +69,7 @@ const SignInForm = (props) => {
       >
         SignIn With Google
       </Button>
+      {/* forgot password text */}
       <Grid container>
         <Grid item xs>
           <Link href="#" variant="body2">
