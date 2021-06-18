@@ -1,4 +1,5 @@
 import React from "react";
+import "../../App.css";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -8,9 +9,12 @@ import Grid from "@material-ui/core/Grid";
 import useStyles from "./signin-form-styles";
 import { Typography, Box } from "@material-ui/core";
 import Google from "@material-ui/icons/Google";
+import Loader from "../../UI/Loader/loader";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignInForm = (props) => {
   const classes = useStyles();
+  const state = useSelector((state) => state);
 
   return (
     <form className={classes.form} noValidate>
@@ -26,6 +30,8 @@ const SignInForm = (props) => {
           name="email"
           autoComplete="email"
           autoFocus
+          onChange={props.setCredentialsHandler}
+          value={props.email}
         />
       </Box>
 
@@ -40,6 +46,8 @@ const SignInForm = (props) => {
         id="password"
         autoComplete="current-password"
         className={classes.textBox}
+        onChange={props.setCredentialsHandler}
+        value={props.password}
       />
       <FormControlLabel
         control={<Checkbox value="remember" color="primary" />}
@@ -52,8 +60,9 @@ const SignInForm = (props) => {
         variant="contained"
         color="primary"
         className={classes.btn}
+        onClick={props.emailAndPassSignHandler}
       >
-        Sign In
+        {state.isSignInLoading ? <Loader /> : "SIGN IN"}
       </Button>
 
       <Typography variant="h5" style={{ textAlign: "center" }}>
@@ -66,9 +75,9 @@ const SignInForm = (props) => {
         fullWidth
         className={classes.btn + " " + classes.googleBtn}
         startIcon={<Google />}
-        onClick={props.googleSignIn}
+        onClick={props.googleSignInHandler}
       >
-        SignIn With Google
+        {state.isGoogleLoading ? <Loader /> : "SignIn With Google"}
       </Button>
       {/* forgot password text */}
       <Grid container>

@@ -7,6 +7,9 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
+import Loader from '../../UI/Loader/loader'
+import { useSelector } from "react-redux";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,9 +38,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
 
+  const state = useSelector(state => state)
   return (
     <form className={classes.form} noValidate>
       <Box>
@@ -52,6 +56,8 @@ export default function SignUp() {
           name="email"
           autoComplete="email"
           autoFocus
+          value= {props.email}
+          onChange = {props.setCredentialsHandler}
         />
       </Box>
 
@@ -66,14 +72,17 @@ export default function SignUp() {
         id="password"
         autoComplete="current-password"
         className={classes.textBox}
+        value = {props.password}
+        onChange={props.setCredentialsHandler}
       />
       <Button
         type="submit"
         fullWidth
         variant="contained"
         className={classes.submit + " " + classes.btn2}
+        onClick = {props.emailAndPassSignHandler}
       >
-        Sign Up
+       {state.isSignUnLoading ? <Loader /> : "SIGN UP"}
       </Button>
     </form>
   );

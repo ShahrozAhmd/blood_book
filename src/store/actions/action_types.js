@@ -1,7 +1,17 @@
-export const SIGN_IN_WITH_EMAIL= "SIGN_IN_WITH_EMAIL";
-export const SIGN_UP_WITH_EMAIL = "SIGN_UP_WITH_EMAIL";
+// actions for signin with email and password
+export const SIGN_IN_WITH_EMAIL_INIT= "SIGN_IN_WITH_EMAIL_INIT";
+export const SIGN_IN_WITH_EMAIL_SUCCESS= "SIGN_IN_WITH_EMAIL_SUCCESS";
+export const SIGN_IN_WITH_EMAIL_FAILED= "SIGN_IN_WITH_EMAIL_FAILED";
 
-export const SIGN_IN_WITH_GOOGLE= "SIGN_IN_WITH_GOOGLE";
+// actions for signup with email and password
+export const SIGN_UP_WITH_EMAIL_INIT = "SIGN_UP_WITH_EMAIL_INIT";
+export const SIGN_UP_WITH_EMAIL_SUCCESS = "SIGN_UP_WITH_EMAIL_SUCCESS";
+export const SIGN_UP_WITH_EMAIL_FAILED = "SIGN_UP_WITH_EMAIL_FAILED";
+
+// actions for signin with google
+export const SIGN_IN_WITH_GOOGLE_INIT= "SIGN_IN_WITH_GOOGLE_INIT";
+export const SIGN_IN_WITH_GOOGLE_SUCCESS= "SIGN_IN_WITH_GOOGLE_SUCCESS";
+export const SIGN_IN_WITH_GOOGLE_FAILED= "SIGN_IN_WITH_GOOGLE_FAILED";
 
 
 

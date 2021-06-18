@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from "react";
-// import classes from "./landing.module.css";
+import React, { Fragment, useState, useEffect } from "react";
 import SignIn from "../../Components/SignIn/signin-form";
 import SignUp from "../../Components/Signup/signup-form";
 import Container from "@material-ui/core/Container";
@@ -28,26 +27,49 @@ import {
 const Landing = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  console.log(state);
 
   // STATES STARTS HERE>>>
   const [open, setOpen] = useState(false);
 
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [credentials, setCredentials] = useState({
+    email: null,
+    password: null,
+  });
+
+  useEffect(() => {
+    console.log(credentials);
+  }, [credentials]);
 
   // STATES ENDS HERE>>>
 
   //HANDLERS
+  // for modal
   const handleOpen = () => {
     setOpen(true);
   };
-
+  // for modal
   const handleClose = () => {
     setOpen(false);
   };
 
-  const googleSignIn = () => {
+  const setCredentialsHandler = (event) => {
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
+  };
+
+  const googleSignInHandler = (e) => {
+    e.preventDefault();
     dispatch(signInWithGoogle());
+  };
+  const emailAndPassSignHandler = (e) => {
+    e.preventDefault();
+    if(open){
+      dispatch(signUpWithEmail(credentials.email, credentials.password));
+    }else{
+      dispatch(signInWithEmail(credentials.email, credentials.password));
+    }
+
   };
 
   return (
@@ -68,7 +90,12 @@ const Landing = (props) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">SignUp</h2>
-            <SignUp />
+            <SignUp 
+               email={credentials.email}
+               password={credentials.password}
+               setCredentialsHandler={setCredentialsHandler}
+               emailAndPassSignHandler={emailAndPassSignHandler}
+            />
           </div>
         </Fade>
       </Modal>
@@ -123,7 +150,14 @@ const Landing = (props) => {
               </Typography>
             </Grid>
             <Grid item>
-              <SignIn googleSignIn={googleSignIn} />
+              {/* Sign in component here */}
+              <SignIn
+                email={credentials.email}
+                password={credentials.password}
+                setCredentialsHandler={setCredentialsHandler}
+                emailAndPassSignHandler={emailAndPassSignHandler}
+                googleSignInHandler={googleSignInHandler}
+              />
             </Grid>
           </Grid>
 
