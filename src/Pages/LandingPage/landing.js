@@ -46,11 +46,11 @@ const Landing = (props) => {
 
   //HANDLERS
   // for modal
-  const handleOpen = () => {
+  const signUpModalOpen = () => {
     setOpen(true);
   };
   // for modal
-  const handleClose = () => {
+  const signUpModalClose = () => {
     setOpen(false);
   };
 
@@ -64,12 +64,11 @@ const Landing = (props) => {
   };
   const emailAndPassSignHandler = (e) => {
     e.preventDefault();
-    if(open){
+    if (open) {
       dispatch(signUpWithEmail(credentials.email, credentials.password));
-    }else{
+    } else {
       dispatch(signInWithEmail(credentials.email, credentials.password));
     }
-
   };
 
   return (
@@ -80,7 +79,7 @@ const Landing = (props) => {
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
-        onClose={handleClose}
+        onClose={signUpModalClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -90,11 +89,11 @@ const Landing = (props) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">SignUp</h2>
-            <SignUp 
-               email={credentials.email}
-               password={credentials.password}
-               setCredentialsHandler={setCredentialsHandler}
-               emailAndPassSignHandler={emailAndPassSignHandler}
+            <SignUp
+              email={credentials.email}
+              password={credentials.password}
+              setCredentialsHandler={setCredentialsHandler}
+              emailAndPassSignHandler={emailAndPassSignHandler}
             />
           </div>
         </Fade>
@@ -111,7 +110,7 @@ const Landing = (props) => {
           <Grid item>
             <Box mt={2}>
               <Button
-                onClick={handleOpen}
+                onClick={signUpModalOpen}
                 variant="outlined"
                 color="primary"
                 className={classes.btn1}
@@ -157,6 +156,7 @@ const Landing = (props) => {
                 setCredentialsHandler={setCredentialsHandler}
                 emailAndPassSignHandler={emailAndPassSignHandler}
                 googleSignInHandler={googleSignInHandler}
+                open={open}
               />
             </Grid>
           </Grid>

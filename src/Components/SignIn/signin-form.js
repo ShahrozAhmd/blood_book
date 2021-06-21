@@ -31,7 +31,7 @@ const SignInForm = (props) => {
           autoComplete="email"
           autoFocus
           onChange={props.setCredentialsHandler}
-          value={props.email}
+          value={props.open ? null : props.email}
         />
       </Box>
 
@@ -47,12 +47,9 @@ const SignInForm = (props) => {
         autoComplete="current-password"
         className={classes.textBox}
         onChange={props.setCredentialsHandler}
-        value={props.password}
+        value={props.open ? null : props.password}
       />
-      <FormControlLabel
-        control={<Checkbox value="remember" color="primary" />}
-        label="Remember me"
-      />
+
       {/* Sign in with email button */}
       <Button
         type="submit"

@@ -48,10 +48,12 @@ const signUpWithEmailInit = () => ({
   payload: {},
 });
 
-const signUpWithEmailSuccess = () => {
+const signUpWithEmailSuccess = (data) => {
   return {
     type: actionType.SIGN_UP_WITH_EMAIL_SUCCESS,
-    payload: {},
+    payload: {
+      data: data,
+    },
   };
 };
 
