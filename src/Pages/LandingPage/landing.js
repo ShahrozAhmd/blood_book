@@ -27,22 +27,26 @@ import {
 const Landing = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-  console.log(state);
 
   // STATES STARTS HERE>>>
+  const state = useSelector((state) => state);
   const [open, setOpen] = useState(false);
 
   const [credentials, setCredentials] = useState({
     email: null,
     password: null,
   });
-
-  useEffect(() => {
-    console.log(credentials);
-  }, [credentials]);
-
   // STATES ENDS HERE>>>
+
+  // for setting up text boxes empthy
+  useEffect(() => {
+    setCredentials({ email: "", password: "" });
+  }, [state.authData]);
+
+  // for closing the modal on successful signup
+  useEffect(() => {
+    setOpen(false);
+  }, [state.isSignUp]);
 
   //HANDLERS
   // for modal

@@ -6,7 +6,7 @@ const initiaState = {
   isSignInLoading: false,
   isGoogleLoading: false,
   isSignUp: false,
-  isSignIn: false,
+  // isSignIn: false,
 };
 
 const reducer = (state = initiaState, action) => {
@@ -19,15 +19,14 @@ const reducer = (state = initiaState, action) => {
         ...state,
         isSignUpLoading: false,
         authData: action.payload.data,
-        isSignUp: true,
+        isSignUp:true
       };
       break;
     case actionTypes.SIGN_UP_WITH_EMAIL_FAILED:
       return {
         ...state,
         isSignUpLoading: false,
-        authData: action.payload.data,
-        isSignUp: false,
+        isSignUp:false
       };
       break;
     case actionTypes.SIGN_IN_WITH_EMAIL_INIT:
@@ -37,7 +36,6 @@ const reducer = (state = initiaState, action) => {
       return {
         ...state,
         isSignInLoading: false,
-        isSignIn: true,
         authData: action.payload.data,
       };
       break;
@@ -45,7 +43,6 @@ const reducer = (state = initiaState, action) => {
       return {
         ...state,
         isSignInLoading: false,
-        isSignIn: false,
         authData: action.payload.data,
       };
       break;
@@ -56,7 +53,6 @@ const reducer = (state = initiaState, action) => {
       return {
         ...state,
         isGoogleLoading: false,
-        isSignIn: true,
         authData: action.payload.data,
       };
       break;
@@ -64,7 +60,6 @@ const reducer = (state = initiaState, action) => {
       return {
         ...state,
         isGoogleLoading: false,
-        isSignIn: false,
         authData: action.payload.data,
       };
       break;
