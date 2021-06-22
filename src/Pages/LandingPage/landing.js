@@ -22,6 +22,7 @@ import {
   signInWithEmail,
   signUpWithEmail,
   signInWithGoogle,
+  signOut,
 } from "../../store/actions/auth_action";
 
 const Landing = (props) => {
@@ -73,6 +74,10 @@ const Landing = (props) => {
     } else {
       dispatch(signInWithEmail(credentials.email, credentials.password));
     }
+  };
+
+  const signOutHandler = () => {
+    dispatch(signOut());
   };
 
   return (
@@ -132,6 +137,14 @@ const Landing = (props) => {
                 className={classes.btn2}
               >
                 Search
+              </Button>
+              <Button
+                onClick={signOutHandler}
+                variant="contained"
+                color="primary"
+                className={classes.btn2}
+              >
+                SignOut
               </Button>
             </Box>
           </Grid>

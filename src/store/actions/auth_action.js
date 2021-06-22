@@ -79,7 +79,7 @@ const signUpWithEmail = (email, password) => {
   };
 };
 
-// // Signin with google actions
+// Signin with google actions
 
 const signInWithGoogleInit = () => {
   return {
@@ -119,4 +119,38 @@ const signInWithGoogle = () => {
   };
 };
 
-export { signInWithEmail, signUpWithEmail, signInWithGoogle };
+// Signout actions
+const signOutSuccess = (data) => {
+  return {
+    type: actionType.SIGN_OUT_SUCCESS,
+    payload: {
+      data: data,
+    },
+  };
+};
+
+const signOutFailed = (data) => {
+  return {
+    type: actionType.SIGN_OUT_FAILED,
+    payload: {
+      data: data,
+    },
+  };
+};
+// Signout all users, email and google both
+const signOut = () => {
+  return (dispatch) => {
+    firebaseAuth
+      .signOut()
+      .then((res) => {
+        dispatch(signOutSuccess(res));
+        console.log(res);
+      })
+      .catch((error) => {
+        dispatch(signOutFailed(error));
+        console.log(error);
+      });
+  };
+};
+
+export { signInWithEmail, signUpWithEmail, signInWithGoogle, signOut };
