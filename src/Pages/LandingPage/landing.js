@@ -31,6 +31,7 @@ const Landing = (props) => {
 
   // STATES STARTS HERE>>>
   const state = useSelector((state) => state);
+  console.log(state.authData);
   const [open, setOpen] = useState(false);
 
   const [credentials, setCredentials] = useState({
@@ -42,7 +43,7 @@ const Landing = (props) => {
   // for setting up text boxes empthy
   useEffect(() => {
     setCredentials({ email: "", password: "" });
-  }, [state.authData]);
+  }, [state.isSignUp, state.isSignIn]);
 
   // for closing the modal on successful signup
   useEffect(() => {

@@ -51,9 +51,9 @@ const signUpWithEmailInit = () => ({
 const signUpWithEmailSuccess = (data) => {
   return {
     type: actionType.SIGN_UP_WITH_EMAIL_SUCCESS,
-    payload: {
-      data: data,
-    },
+    // payload: {
+    //   data: data,
+    // },
   };
 };
 
@@ -70,8 +70,8 @@ const signUpWithEmail = (email, password) => {
     // code for auth from firebase:
     firebaseAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((res) => {
-        dispatch(signUpWithEmailSuccess(res.user));
+      .then(() => {
+        dispatch(signUpWithEmailSuccess());
       })
       .catch((error) => {
         dispatch(signUpWithEmailFailed(error.message));
@@ -137,6 +137,16 @@ const signOutFailed = (data) => {
     },
   };
 };
+// firebase provided function to check that the user is login or  logout
+
+const authStateObserver = (user) => {
+  return {
+    type: actionType.SET_AUTH_DATA,
+    payload: {
+      data: user,
+    },
+  };
+};
 // Signout all users, email and google both
 const signOut = () => {
   return (dispatch) => {
@@ -144,6 +154,7 @@ const signOut = () => {
       .signOut()
       .then((res) => {
         dispatch(signOutSuccess(res));
+
         console.log(res);
       })
       .catch((error) => {
@@ -153,4 +164,10 @@ const signOut = () => {
   };
 };
 
-export { signInWithEmail, signUpWithEmail, signInWithGoogle, signOut };
+export {
+  signInWithEmail,
+  signUpWithEmail,
+  signInWithGoogle,
+  authStateObserver,
+  signOut,
+};

@@ -16,3 +16,7 @@ export const SIGN_IN_WITH_GOOGLE_FAILED = "SIGN_IN_WITH_GOOGLE_FAILED";
 // actions for signout
 export const SIGN_OUT_SUCCESS = "SIGN_OUT_SUCCESS";
 export const SIGN_OUT_FAILED = "SIGN_OUT_FAILED";
+
+// set auth data bu firebase observer method
+export const SET_AUTH_DATA = "SET_AUTH_DATA";
+
