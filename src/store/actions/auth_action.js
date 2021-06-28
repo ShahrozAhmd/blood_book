@@ -26,7 +26,7 @@ const signInWithEmailFailed = (data) => {
   };
 };
 
-const signInWithEmail = (email, password) => {
+const signInWithEmail = (email, password, history) => {
   return (dispatch) => {
     dispatch(signInWithEmailInit());
     // code for auth from firebase:
@@ -34,6 +34,7 @@ const signInWithEmail = (email, password) => {
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
         dispatch(signInWithEmailSuccess(res.user));
+        history.push("/dashboard");
       })
       .catch((error) => {
         dispatch(signInWithEmailFailed(error.message));
@@ -64,7 +65,7 @@ const signUpWithEmailFailed = () => {
   };
 };
 
-const signUpWithEmail = (email, password) => {
+const signUpWithEmail = (email, password, history) => {
   return (dispatch) => {
     dispatch(signUpWithEmailInit());
     // code for auth from firebase:

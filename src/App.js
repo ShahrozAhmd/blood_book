@@ -34,9 +34,17 @@ function App() {
 
   return (
     <Fragment>
-      <Landing />
-      {/* <Dashboard />
-      <Profile/> */}
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
+      </Switch>
     </Fragment>
   );
 }

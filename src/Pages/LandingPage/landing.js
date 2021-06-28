@@ -24,10 +24,12 @@ import {
   signInWithGoogle,
   signOut,
 } from "../../store/actions/auth_action";
+import {useHistory} from 'react-router-dom';
 
 const Landing = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // STATES STARTS HERE>>>
   const state = useSelector((state) => state);
@@ -71,9 +73,9 @@ const Landing = (props) => {
   const emailAndPassSignHandler = (e) => {
     e.preventDefault();
     if (open) {
-      dispatch(signUpWithEmail(credentials.email, credentials.password));
+      dispatch(signUpWithEmail(credentials.email, credentials.password,history));
     } else {
-      dispatch(signInWithEmail(credentials.email, credentials.password));
+      dispatch(signInWithEmail(credentials.email, credentials.password,history));
     }
   };
 
