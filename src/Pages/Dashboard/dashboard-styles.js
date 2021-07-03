@@ -8,8 +8,6 @@ const useStyles = makeStyles({
   },
 
   mainFeed: {
-    // textAlign: "center",
-    // border: "5px solid skyblue",
     maxWidth:"70%",
     margin:"1%"
   },

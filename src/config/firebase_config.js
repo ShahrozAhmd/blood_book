@@ -25,4 +25,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 // FIREBASE DATABASE INSTANCE:
 const db = firebase.firestore();
 
-export { firebaseAuth, provider, db };
+// server timem, it noted the time when the server hit with the update.
+const timeStamp  = firebase.firestore.FieldValue.serverTimestamp();
+
+export { firebaseAuth, provider, db, timeStamp };

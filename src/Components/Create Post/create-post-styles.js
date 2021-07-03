@@ -3,10 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => {
   return {
     creatPostContainer: {
-      "& > *": {
-        width: theme.spacing(75),
+      
+        width: "100%",
         height: theme.spacing(10),
-      },
+      
     },
     postTexField: {
       backgroundColor: "#F2F3F4",

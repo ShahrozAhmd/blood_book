@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import useStyles from "./create-post-styles";
@@ -16,64 +16,104 @@ import Switch from "@material-ui/core/Switch";
 import { Box } from "@material-ui/core";
 import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 const CreatePost = (props) => {
   const classes = useStyles();
-
-  // state for handeling select blood option starts here
-  const [bloodType, setBloodType] = useState("");
-
-  const handleChangeBloodType = (event) => {
-    setBloodType(event.target.value);
-  };
-  // state for handeling select blood option ends here
-
-  // state for no of bottle of blood option starts here
+  // set message
+  const [message, setMessage] = useState("");
+  // state for handeling select blood option
+  const [bloodGroup, setBloodGroup] = useState("");
+  // state for no of bottle of blood option
   const [bottles, setBottles] = useState("");
+  //set amount option state
+  const [amount, setAmount] = useState({
+    amount: "",
+  });
+  // time and date:
+  const [timeDate, setTimeDate] = useState("");
 
-  const handleChangeBottles = (event) => {
-    setBottles(event.target.value);
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value);
   };
-  // state for no of bottle of blood option ends here
 
-  //paid and urgent blood option state starts>>>>
+  const handleTimeDate = (e) => {
+    setTimeDate(e.target.value);
+  };
+  //paid and urgent blood option state
   const [switchButton, setSwitchButton] = useState({
     urgentBlood: false,
     paidBlood: false,
   });
-
+  // set blood type state
+  const handleChangeBloodGroup = (event) => {
+    setBloodGroup(event.target.value);
+  };
+  // set no of bottle state
+  const handleChangeBottles = (event) => {
+    setBottles(event.target.value);
+  };
   const handleSwitchChange = (event) => {
     setSwitchButton({
       ...switchButton,
       [event.target.name]: event.target.checked,
     });
   };
-  //<<<< paid and urgent blood  option state end
 
-  //set amount option state starts>>>>
-  const [amount, setAmount] = useState({
-    amount: "",
-  });
-
-  const handleAmountChange = (prop) => (event) => {
-    setAmount({ ...amount, [prop]: event.target.value });
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value);
   };
-  //<<<< set amount option state end
+
+  // const handleAmountChange = (prop) => (event) => {
+  //   setAmount({ ...amount, [prop]: event.target.value });
+  // };
+
+  const allBloodGroups = () => {
+    const bloodGroups = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
+    return bloodGroups.map((item) => <MenuItem value={item}>{item}</MenuItem>);
+  };
+  const numberOfBottles = () => {
+    const noOfBottles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+    return noOfBottles.map((item) => <MenuItem value={item}>{item}</MenuItem>);
+  };
+
+  useEffect(() => {
+    console.log(timeDate);
+    console.log(message);
+    console.log(bloodGroup);
+    console.log(bottles);
+    console.log(amount);
+    console.log(switchButton.urgentBlood);
+    console.log(switchButton.paidBlood);
+  }, [
+    timeDate,
+    message,
+    bloodGroup,
+    bottles,
+    amount,
+    switchButton.urgentBlood,
+    switchButton.paidBlood,
+  ]);
+
   return (
     <Box className={classes.createpostbox}>
       <form className={classes.writepost} noValidate autoComplete="off">
-        <Box display="flex" flexDirection="column" justifycContent="space-between">
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifycContent="space-between"
+        >
           <Box>
             <TextField
+              onChange={handleMessageChange}
               id="outlined-multiline-static"
               multiline
               rows={4}
-              defaultValue="Write your request post..."
+              placeholder="Write your request post..."
               variant="outlined"
             />
           </Box>
-
+          {/* upload media icons starts here */}
           <Box display="flex" justifyContent="space-evenly">
             <Box>
               <input
@@ -155,12 +195,11 @@ const CreatePost = (props) => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={bloodType}
-                onChange={handleChangeBloodType}
+                value={bloodGroup}
+                onChange={handleChangeBloodGroup}
               >
-                <MenuItem value="A">A</MenuItem>
-                <MenuItem value="B">B</MenuItem>
-                <MenuItem value="C">C</MenuItem>
+                {/* this function returns the dropdown elements */}
+                {allBloodGroups()}
               </Select>
             </FormControl>
             {/* Select no of bottles*/}
@@ -172,9 +211,7 @@ const CreatePost = (props) => {
                 value={bottles}
                 onChange={handleChangeBottles}
               >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
+                {numberOfBottles()}
               </Select>
             </FormControl>
           </Box>
@@ -196,6 +233,7 @@ const CreatePost = (props) => {
 
             <Box className={classes.dateField}>
               <TextField
+                onChange={handleTimeDate}
                 id="datetime-local"
                 label="Set Time/Date"
                 type="datetime-local"
@@ -230,7 +268,7 @@ const CreatePost = (props) => {
                 <Input
                   id="standard-adornment-amount"
                   value={amount.amount}
-                  onChange={handleAmountChange("amount")}
+                  onChange={handleAmountChange}
                   startAdornment={
                     <InputAdornment position="start">Rs</InputAdornment>
                   }
