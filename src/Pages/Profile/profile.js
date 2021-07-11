@@ -5,7 +5,6 @@ import { Box, Typography } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import IconButton from "@material-ui/core/IconButton";
-import ProgressCircle from "../../UI/Progress Circle/progress-circle";
 import ProfileImage from "../../UI/ProfileImage/profile-image";
 import InlineInfo from "../../UI/InlineIconText/inline_icon_text";
 import ProfileEditButton from "../../UI/ProfileEditButton/profile-edit-button";
@@ -18,18 +17,23 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import DoneIcon from "@material-ui/icons/Done";
 import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form";
+import { useRef } from "react";
 
 function Profile(props) {
   const classes = useStyles();
   // code for modal
   const [open, setOpen] = useState(false);
+  // UI level states to make clear that on which section user click to edit in his profile
+  const [whichToEdit, setWhichToEdit] = useState(null);
 
-  const handleOpen = () => {
+  const handleOpen = (arg) => {
     setOpen(true);
+    setWhichToEdit(arg);
   };
 
   const handleClose = () => {
     setOpen(false);
+    setWhichToEdit(null);
   };
 
   return (
@@ -44,14 +48,14 @@ function Profile(props) {
               justifyContent="space-evenly"
               alignItems="center"
             >
-              <Box style={{ padding: "5px" }}>
+              {/* <Box style={{ padding: "5px" }}>
                 <Typography style={{ fontSize: "0.8rem" }}>
                   Your Profile:
                 </Typography>
               </Box>
               <Box>
                 <ProgressCircle />
-              </Box>
+              </Box> */}
             </Box>
             {/*
             This is commented for now , it is the 3 dots setting option
@@ -63,7 +67,7 @@ function Profile(props) {
           </Box>
           {/* SECTION 01 ENDS HERE */}
 
-          {/* SECTION 02 STARTS HERE */}
+          {/* <<General>> SECTION 02 STARTS HERE */}
           <Box display="flex" flexDirection="column" flexWrap="wrap">
             <Box style={{ padding: "2%" }}>
               <ProfileImage />
@@ -73,7 +77,8 @@ function Profile(props) {
               </Typography>
             </Box>
 
-            <Box>
+            {/* Social icons, thori dair k liye side kiya hai isko */}
+            {/* <Box>
               <Box display="flex" justifyContent="flex-start">
                 <Box>
                   <GoogleIcon />
@@ -84,13 +89,12 @@ function Profile(props) {
                 <Box>
                   <InstagramIcon />
                 </Box>
-                {/* <Box className={classes.el}>I4</Box> */}
               </Box>
-            </Box>
+            </Box> */}
           </Box>
           {/* SECTION 02 ENDS HERE */}
 
-          {/* SECTION 03 STARTS HERE */}
+          {/*<<Bio>> SECTION 03 STARTS HERE */}
           <Box
             display="flex"
             flexWrap="wrap"
@@ -99,7 +103,8 @@ function Profile(props) {
             alignSelf="center"
             style={{ padding: "2%" }}
           >
-            <ProfileEditButton clicked={handleOpen} />
+            {/* button to edit a specific profile section */}
+            <ProfileEditButton name="bio" clicked={handleOpen} />
 
             <Box>
               <InlineInfo icon="email" text="shahrozahmed286@gmail.com" />
@@ -122,13 +127,13 @@ function Profile(props) {
           </Box>
           {/* SECTION 03 ENDS HERE */}
 
-          {/* SECTION 04 STARTS HERE */}
+          {/* <<Personal>> SECTION 04 STARTS HERE */}
           <Box display="flex" flexWrap="wrap" style={{ padding: "2%" }}>
             <Box style={{ width: "50%" }}>
               <Typography variant="h6" gutterBottom>
                 PERSONAL:
               </Typography>
-              <ProfileEditButton clicked={handleOpen} />
+              <ProfileEditButton name="personal" clicked={handleOpen} />
               <Box>
                 <InlineInfo icon="age" text="25" />
               </Box>
@@ -145,12 +150,12 @@ function Profile(props) {
                 <InlineInfo icon="bloodgroup" text="A+" />
               </Box>
             </Box>
-
+            {/* <<Professional>> SECTION 04a STARTS HERE */}
             <Box style={{ width: "50%" }}>
               <Typography variant="h6" gutterBottom>
                 PROFESSIONAL:
               </Typography>
-              <ProfileEditButton clicked={handleOpen} />
+              <ProfileEditButton name="professional" clicked={handleOpen} />
               <Box>
                 <InlineInfo icon="education" text="BSCS" />
               </Box>
@@ -161,17 +166,20 @@ function Profile(props) {
                 <InlineInfo icon="languages" text="English/ Urdu" />
               </Box>
             </Box>
+            {/* <<Professional>> SECTION 04a ENDS  HERE */}
           </Box>
 
           {/* SECTION 04 ENDS HERE */}
         </Paper>
+
         {/* Donor availability row code */}
         <CheckDonorEligibility />
       </Container>
+
       {/* modal rendering code execute on state change*/}
       <ModalPopup open={open} handleClose={handleClose}>
         {/* children for modal , specific for form section data updation */}
-        <ProfileEditForm />
+        <ProfileEditForm toEdit={whichToEdit} />
         <Button
           variant="contained"
           color="secondary"

@@ -9,35 +9,92 @@ function ProfileEditForm(props) {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
-    private: true,
+    privateEmail: true,
+    privatePhoneNumber: true,
+    privateLocation: true,
   });
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-  return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <TextField
-        id="outlined-basic"
-        label="Outlined"
-        variant="outlined"
-        fullWidth
-      />
-      <Box>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={state.private}
-              onChange={handleChange}
-              name="private"
+  switch (props.toEdit) {
+    case "bio":
+      return (
+        <form className={classes.root} noValidate autoComplete="off">
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            fullWidth
+          />
+          <Box>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={state.privateEmail}
+                  onChange={handleChange}
+                  name="privateEmail"
+                />
+              }
+              label="Private Email"
             />
-          }
-          label="Private"
-        />
-      </Box>
-    </form>
-  );
+          </Box>
+          <TextField
+            id="outlined-basic"
+            label="Phone Number"
+            variant="outlined"
+            fullWidth
+          />
+          <Box>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={state.privateEmail}
+                  onChange={handleChange}
+                  name="privatePhoneNumber"
+                />
+              }
+              label="Private Number"
+            />
+          </Box>
+          <TextField
+            id="outlined-basic"
+            label="Location"
+            variant="outlined"
+            fullWidth
+          />
+          <Box>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={state.privateEmail}
+                  onChange={handleChange}
+                  name="privateLocation"
+                />
+              }
+              label="Private Location"
+            />
+          </Box>
+
+          <TextField
+            id="outlined-multiline-static"
+            label="Multiline"
+            multiline
+            rows={4}
+            defaultValue="Default Value"
+            variant="outlined"
+            fullWidth
+          />
+        </form>
+      );
+
+      break;
+    case "personal":
+      break;
+    case "professional":
+      break;
+  }
 }
 
 export default ProfileEditForm;
