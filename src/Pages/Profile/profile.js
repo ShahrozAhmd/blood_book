@@ -14,8 +14,6 @@ import GoogleIcon from "@material-ui/icons/Google";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import Button from "@material-ui/core/Button";
-import DoneIcon from "@material-ui/icons/Done";
 import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form";
 import { useRef } from "react";
 
@@ -32,8 +30,9 @@ function Profile(props) {
   };
 
   const handleClose = () => {
-    setOpen(false);
     setWhichToEdit(null);
+    setOpen(false);
+   
   };
 
   return (
@@ -69,12 +68,14 @@ function Profile(props) {
 
           {/* <<General>> SECTION 02 STARTS HERE */}
           <Box display="flex" flexDirection="column" flexWrap="wrap">
+          <ProfileEditButton name="general" clicked={handleOpen} />
             <Box style={{ padding: "2%" }}>
               <ProfileImage />
               <br />
               <Typography variant="h6" gutterBottom>
-                USER NAME
+                NAME
               </Typography>
+             
             </Box>
 
             {/* Social icons, thori dair k liye side kiya hai isko */}
@@ -137,9 +138,9 @@ function Profile(props) {
               <Box>
                 <InlineInfo icon="age" text="25" />
               </Box>
-              <Box>
+              {/* <Box>
                 <InlineInfo icon="dob" text="October 22, 2021" />
-              </Box>
+              </Box> */}
               <Box>
                 <InlineInfo icon="gender" text="male" />
               </Box>
@@ -180,14 +181,7 @@ function Profile(props) {
       <ModalPopup open={open} handleClose={handleClose}>
         {/* children for modal , specific for form section data updation */}
         <ProfileEditForm toEdit={whichToEdit} />
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.button}
-          startIcon={<DoneIcon />}
-        >
-          UPDATE
-        </Button>
+        
       </ModalPopup>
     </Fragment>
   );
