@@ -6,10 +6,10 @@ import Typography from "@material-ui/core/Typography";
 import DriveFileRenameOutlineIcon from "@material-ui/icons/DriveFileRenameOutline";
 import Button from "@material-ui/core/Button";
 import ModalPopup from "../../UI/Modal/modal";
-import EligibileDonorForm from "../EligibileDonorForm/Eligibile-donor-form";
+import EligibileDonorForm from "./EligibileDonorForm/Eligibile-donor-form";
 import EligibileDonorResult from "../EligibilityResult/eligiblity-result";
 
-function EligableDonor(props) {
+const  EligableDonor = (props) => {
   const classes = useStyles();
   // code for modal
   const [open, setOpen] = useState(false);
@@ -37,7 +37,7 @@ function EligableDonor(props) {
               display="block"
               gutterBottom
             >
-              Take your Donor Eligability Test
+              Do You Wanna Be A Donor
             </Typography>
           </Box>
           <Box>

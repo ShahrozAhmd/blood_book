@@ -52,7 +52,7 @@ function ProfileEditForm(props) {
             id="contained-button-file"
             type="file"
           />
-          <label style = {{width:"100%"}}htmlFor="contained-button-file">
+          <label style={{ width: "100%" }} htmlFor="contained-button-file">
             <Button
               fullWidth
               variant="contained"
@@ -63,13 +63,13 @@ function ProfileEditForm(props) {
             </Button>
           </label>
           <TextField
-            style = {{marginTop:"3%"}}
+            style={{ marginTop: "3%" }}
             id="outlined-basic"
             label="Name"
             variant="outlined"
             fullWidth
           />
-           <Button
+          <Button
             variant="contained"
             color="secondary"
             className={classes.button}
