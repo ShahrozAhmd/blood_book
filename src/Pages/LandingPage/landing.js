@@ -32,7 +32,7 @@ const Landing = (props) => {
   const history = useHistory();
 
   // STATES STARTS HERE>>>
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.authentication);
   console.log(state.authData);
   const [open, setOpen] = useState(false);
 

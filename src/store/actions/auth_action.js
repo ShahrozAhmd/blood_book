@@ -1,5 +1,41 @@
 import * as actionType from "./action_types";
 import { firebaseAuth, provider } from "../../config/firebase_config";
+import {
+  setEmptyProfileOnEmailSignUp,
+  setEmptyProfileOnGoogleSignin,
+  loadProfileOnSignIn,
+  vanishProfileOnSignOut
+} from "./profile_actions";
+
+var obj = {
+  general: {
+    profileImage: "string(url)",
+    name: "string",
+  },
+  bio: {
+    email: ["string", true],
+    phoneNumber: [3323142746, true],
+    city: ["string", true],
+    shortIntro: "string",
+  },
+  personal: {
+    age: [22, true],
+    gender: "string",
+    maritalStatus: "string",
+    bloodGroup: "string",
+  },
+  professional: {
+    education: "string",
+    occupation: "string",
+    languages: ["string1", "string2"],
+  },
+  donorForm: {
+    wannaBeDonor: false,
+    city: "string",
+    disease: true,
+    donorBloodGroup: "string",
+  },
+};
 
 // SignIn with email actions
 const signInWithEmailInit = () => {
@@ -34,7 +70,8 @@ const signInWithEmail = (email, password, history) => {
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
         dispatch(signInWithEmailSuccess(res.user));
-        history.push("/dashboard");
+        dispatch(loadProfileOnSignIn(res.user.uid))
+        history.push("/profile");
       })
       .catch((error) => {
         dispatch(signInWithEmailFailed(error.message));
@@ -71,8 +108,9 @@ const signUpWithEmail = (email, password, history) => {
     // code for auth from firebase:
     firebaseAuth
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((res) => {
         dispatch(signUpWithEmailSuccess());
+        dispatch(setEmptyProfileOnEmailSignUp(res, obj));
       })
       .catch((error) => {
         dispatch(signUpWithEmailFailed(error.message));
@@ -113,6 +151,8 @@ const signInWithGoogle = () => {
       .signInWithPopup(provider)
       .then((res) => {
         dispatch(signInWithGoogleSuccess(res.credential));
+        dispatch(setEmptyProfileOnGoogleSignin(res.user.uid, obj));
+        dispatch(loadProfileOnSignIn(res.user.uid))
       })
       .catch((error) => {
         dispatch(signInWithGoogleFailed(error.message));
@@ -154,8 +194,8 @@ const signOut = () => {
     firebaseAuth
       .signOut()
       .then((res) => {
+        dispatch(vanishProfileOnSignOut());
         dispatch(signOutSuccess(res));
-
         console.log(res);
       })
       .catch((error) => {

@@ -12,6 +12,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { useSelector } from "react-redux";
 
 const BLOOD_GROUPS = [
   { bloodType: "A+" },
@@ -25,6 +26,19 @@ const BLOOD_GROUPS = [
 ];
 
 function ProfileEditForm(props) {
+
+  const profile = useSelector(state=> state.profile.profileData);
+  // chunks of profile:
+  const [generalProfile, setGeneralProfile] = useState(profile.general);
+  const [bioProfile, setBioProfile] = useState(profile.bio);
+  const [professionalProfile, setProfessionalProfile ] = useState(profile.personal);
+  const [personlProfile, setPersonalProfile] = useState(profile.personal)
+
+  console.log(generalProfile)
+  console.log(bioProfile)
+  console.log(professionalProfile)
+  console.log(personlProfile)
+
   const classes = useStyles();
 
   const [privateFields, setPrivateFields] = useState({
@@ -42,6 +56,12 @@ function ProfileEditForm(props) {
     });
   };
 
+  const bioTextFieldChangeHandler = (e) => {
+    if(e.target.name === 'email'){
+      setBioProfile({...bioProfile, [e.target.name]:[e.target.value]})
+    }
+   
+  }
   switch (props.toEdit) {
     case "general":
       return (
@@ -88,6 +108,8 @@ function ProfileEditForm(props) {
             label="Email"
             variant="outlined"
             fullWidth
+            // value = {bioProfile.email[0]}
+            // onChange = {bioTextFieldChangeHandler}
           />
           <Box>
             <FormControlLabel
