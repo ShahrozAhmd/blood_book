@@ -49,8 +49,9 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    const uid = localStorage.getItem("uid");
-    if (uid) {
+    
+    if (localStorage.getItem("uid")) {
+      const uid = localStorage.getItem("uid");
       dispatch(loadProfileOnRefresh(uid));
     }
   }, []);
