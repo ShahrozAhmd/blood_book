@@ -13,13 +13,13 @@ var obj = {
     name: "string",
   },
   bio: {
-    email: ["string", true],
-    phoneNumber: [3323142746, true],
-    city: ["string", true],
+    email: "string",
+    phoneNumber: "string",
+    city: "string",
     shortIntro: "string",
   },
   personal: {
-    age: [22, true],
+    age: 22,
     gender: "string",
     maritalStatus: "string",
     bloodGroup: "string",
@@ -70,6 +70,7 @@ const signInWithEmail = (email, password, history) => {
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
         dispatch(signInWithEmailSuccess(res.user));
+        localStorage.setItem("uid", res.user.uid);
         dispatch(loadProfileOnSignIn(res.user.uid))
         history.push("/profile");
       })
@@ -196,6 +197,7 @@ const signOut = () => {
       .then((res) => {
         dispatch(vanishProfileOnSignOut());
         dispatch(signOutSuccess(res));
+        localStorage.removeItem("uid");
         console.log(res);
       })
       .catch((error) => {

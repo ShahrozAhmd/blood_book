@@ -130,6 +130,7 @@ const loadProfileOnRefreshInit = () => {
   
   const loadProfileOnRefreshFailed = (err) => {
     return {
+        
       type: actionType.LOAD_PROFILE_ON_REFRESH_FAILED,
       error: err,
     };

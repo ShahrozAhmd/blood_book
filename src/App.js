@@ -38,19 +38,22 @@ function App() {
 
   // this is a realtime listner for our profile data, it listen evry changes in our profile
   // document in firestore and update the global local store
-  useEffect(() => {
-    // console.log(auth.uid)
-    db.collection("profiles")
-      .doc(state.authData.uid)
-      .onSnapshot((doc) => {
-        console.log(doc.data());
-        dispatch(setProfileRealTime(doc.data()));
-      });
-  }, []);
-
   // useEffect(() => {
-  //   dispatch(loadProfileOnRefresh(state.authData.uid));
+  //   // console.log(auth.uid)
+  //   db.collection("profiles")
+  //     .doc(state.authData.uid)
+  //     .onSnapshot((doc) => {
+  //       console.log(doc.data());
+  //       dispatch(setProfileRealTime(doc.data()));
+  //     });
   // }, []);
+
+  useEffect(() => {
+    const uid = localStorage.getItem("uid");
+    if (uid) {
+      dispatch(loadProfileOnRefresh(uid));
+    }
+  }, []);
 
   return (
     <Fragment>

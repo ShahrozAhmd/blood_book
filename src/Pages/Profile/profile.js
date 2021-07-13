@@ -45,7 +45,7 @@ function Profile(props) {
 
  
   return (
-   profile && <Fragment>
+   profile ? <Fragment>
     <CssBaseline />
     <Container maxWidth="md" className={classes.container}>
       <Paper elevation={3} className={classes.paper}>
@@ -119,8 +119,8 @@ function Profile(props) {
             <InlineInfo
               icon="email"
               text={
-                profile.bio.email[0]
-                  ? profile.bio.email[0]
+                profile.bio.email
+                  ? profile.bio.email
                   : "Your Email Here"
               }
             />
@@ -129,8 +129,8 @@ function Profile(props) {
             <InlineInfo
               icon="phone"
               text={
-                profile.bio.phoneNumber[0]
-                  ? profile.bio.phoneNumber[0]
+                profile.bio.phoneNumber
+                  ? profile.bio.phoneNumber
                   : "Your Phone Number"
               }
             />
@@ -138,7 +138,7 @@ function Profile(props) {
           <Box>
             <InlineInfo
               icon="location"
-              text={profile.bio.city[0] ? profile.bio.city[0] : "Your City"}
+              text={profile.bio.city ? profile.bio.city : "Your City"}
             />
           </Box>
           <Box>
@@ -163,8 +163,8 @@ function Profile(props) {
             <ProfileEditButton name="personal" clicked={handleOpen} />
             <Box>
               <InlineInfo icon="age" text={
-                profile.personal.age[0]
-                  ? profile.personal.age[0]
+                profile.personal.age
+                  ? profile.personal.age
                   : "Your Age"
               } />
             </Box>
@@ -236,7 +236,7 @@ function Profile(props) {
       {/* children for modal , specific for form section data updation */}
       <ProfileEditForm toEdit={whichToEdit} />
     </ModalPopup>
-  </Fragment>
+  </Fragment>: null
   
   );
 }

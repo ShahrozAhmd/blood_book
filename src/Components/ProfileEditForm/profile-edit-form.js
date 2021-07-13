@@ -26,18 +26,19 @@ const BLOOD_GROUPS = [
 ];
 
 function ProfileEditForm(props) {
-
-  const profile = useSelector(state=> state.profile.profileData);
+  const profile = useSelector((state) => state.profile.profileData);
   // chunks of profile:
   const [generalProfile, setGeneralProfile] = useState(profile.general);
   const [bioProfile, setBioProfile] = useState(profile.bio);
-  const [professionalProfile, setProfessionalProfile ] = useState(profile.personal);
-  const [personlProfile, setPersonalProfile] = useState(profile.personal)
+  const [professionalProfile, setProfessionalProfile] = useState(
+    profile.professional
+  );
+  const [personalProfile, setPersonalProfile] = useState(profile.personal);
 
-  console.log(generalProfile)
-  console.log(bioProfile)
-  console.log(professionalProfile)
-  console.log(personlProfile)
+  console.log(generalProfile);
+  console.log(bioProfile);
+  console.log(professionalProfile);
+  console.log(personalProfile);
 
   const classes = useStyles();
 
@@ -57,11 +58,13 @@ function ProfileEditForm(props) {
   };
 
   const bioTextFieldChangeHandler = (e) => {
-    if(e.target.name === 'email'){
-      setBioProfile({...bioProfile, [e.target.name]:[e.target.value]})
-    }
-   
-  }
+    setBioProfile({ ...bioProfile, [e.target.name]: e.target.value });
+  };
+
+  const personalTextFieldChangeHandler = (e) => {
+    setPersonalProfile({ ...personalProfile, [e.target.name]: e.target.value });
+  };
+
   switch (props.toEdit) {
     case "general":
       return (
@@ -104,14 +107,15 @@ function ProfileEditForm(props) {
       return (
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
+            name="email"
             id="outlined-basic"
             label="Email"
             variant="outlined"
             fullWidth
-            // value = {bioProfile.email[0]}
-            // onChange = {bioTextFieldChangeHandler}
+            value={bioProfile.email}
+            onChange={bioTextFieldChangeHandler}
           />
-          <Box>
+          {/* <Box>
             <FormControlLabel
               control={
                 <Switch
@@ -122,14 +126,17 @@ function ProfileEditForm(props) {
               }
               label="Private Email"
             />
-          </Box>
+          </Box> */}
           <TextField
             id="outlined-basic"
             label="Phone Number"
             variant="outlined"
             fullWidth
+            name="phoneNumber"
+            value={bioProfile.phoneNumber}
+            onChange={bioTextFieldChangeHandler}
           />
-          <Box>
+          {/* <Box>
             <FormControlLabel
               control={
                 <Switch
@@ -140,14 +147,17 @@ function ProfileEditForm(props) {
               }
               label="Private Number"
             />
-          </Box>
+          </Box> */}
           <TextField
             id="outlined-basic"
             label="City"
             variant="outlined"
             fullWidth
+            name="city"
+            value={bioProfile.city}
+            onChange={bioTextFieldChangeHandler}
           />
-          <Box>
+          {/* <Box>
             <FormControlLabel
               control={
                 <Switch
@@ -158,7 +168,7 @@ function ProfileEditForm(props) {
               }
               label="Private City"
             />
-          </Box>
+          </Box> */}
 
           <TextField
             id="outlined-multiline-static"
@@ -169,6 +179,9 @@ function ProfileEditForm(props) {
             defaultValue="Default Value"
             variant="outlined"
             fullWidth
+            name="shortIntro"
+            value={bioProfile.shortIntro}
+            onChange={bioTextFieldChangeHandler}
           />
           <Button
             variant="contained"
@@ -192,8 +205,11 @@ function ProfileEditForm(props) {
               shrink: true,
             }}
             variant="outlined"
+            name="age"
+            value={personalProfile.age}
+            onChange={personalTextFieldChangeHandler}
           />
-          <Box>
+          {/* <Box>
             <FormControlLabel
               control={
                 <Switch
@@ -204,7 +220,7 @@ function ProfileEditForm(props) {
               }
               label="Private Age"
             />
-          </Box>
+          </Box> */}
           <FormControl
             fullWidth
             variant="outlined"
@@ -214,13 +230,11 @@ function ProfileEditForm(props) {
             <Select
               labelId="Gender"
               id="Gender"
-              // value={age}
-              // onChange={handleChange}
+              value={personalProfile.gender}
+              onChange={personalTextFieldChangeHandler}
+              name="gender"
               label="Gender"
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
               <MenuItem value={"male"}>Male</MenuItem>
               <MenuItem value={"female"}>Female</MenuItem>
               <MenuItem value={"others"}>Others</MenuItem>
@@ -236,19 +250,17 @@ function ProfileEditForm(props) {
             <Select
               labelId=">MaritalStatus"
               id="MaritalStatus"
-              // value={age}
-              // onChange={handleChange}
+              name="maritalStatus"
+              value={personalProfile.maritalStatus}
+              onChange={personalTextFieldChangeHandler}
               label="MaritalStatus"
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
               <MenuItem value={"single"}>Single</MenuItem>
               <MenuItem value={"married"}>Married</MenuItem>
-              <MenuItem value={"omitted"}>Comitted</MenuItem>
+              <MenuItem value={"comitted"}>Comitted</MenuItem>
             </Select>
           </FormControl>
-          <Box>
+          {/* <Box>
             <FormControlLabel
               control={
                 <Switch
@@ -259,14 +271,17 @@ function ProfileEditForm(props) {
               }
               label="Private Marital Status"
             />
-          </Box>
+          </Box> */}
 
           <Autocomplete
             fullWidth
-            // onChange={(_, value) => setState(value)}
+             onChange={(_, value) => setPersonalProfile({ ...personalProfile, value })}
+            value={personalProfile.bloodGroup}
+            onChange={personalTextFieldChangeHandler}
             options={BLOOD_GROUPS.map((option) => option.bloodType)}
             renderInput={(params) => (
               <TextField
+                name="bloodGroup"
                 {...params}
                 label="Blood Group"
                 margin="normal"
