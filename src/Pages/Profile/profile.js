@@ -228,13 +228,13 @@ function Profile(props) {
       </Paper>
 
       {/* Donor availability row code */}
-      <CheckDonorEligibility donor = {profile.donorForm}/>
+      <CheckDonorEligibility/>
     </Container>
 
     {/* modal rendering code execute on state change*/}
     <ModalPopup open={open} handleClose={handleClose}>
       {/* children for modal , specific for form section data updation */}
-      <ProfileEditForm toEdit={whichToEdit} />
+      <ProfileEditForm  toEdit = {whichToEdit}/>
     </ModalPopup>
   </Fragment>: null
   

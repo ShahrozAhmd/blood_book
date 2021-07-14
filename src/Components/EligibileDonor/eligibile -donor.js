@@ -8,15 +8,20 @@ import Button from "@material-ui/core/Button";
 import ModalPopup from "../../UI/Modal/modal";
 import EligibileDonorForm from "./EligibileDonorForm/Eligibile-donor-form";
 import EligibileDonorResult from "../EligibilityResult/eligiblity-result";
+import { useSelector } from "react-redux";
 
-const  EligableDonor = (props) => {
+const EligableDonor = (props) => {
+  const profile = useSelector((state) => state.profile.profileData);
   const classes = useStyles();
   // code for modal
   const [open, setOpen] = useState(false);
+  // for donor eligiblity
   const [eligiblity, setEligiblity] = useState(false);
+  const [eligResult, setEligResult] = useState(false);
 
-  const isEligible = () => {
+  const isEligible = (result) => {
     setEligiblity(true);
+    setEligResult(result);
   };
   const handleOpen = () => {
     setOpen(true);
@@ -42,6 +47,7 @@ const  EligableDonor = (props) => {
           </Box>
           <Box>
             <Button
+              // disabled = {profile.donorForm.disease}
               onClick={handleOpen}
               variant="contained"
               color="secondary"
@@ -55,14 +61,14 @@ const  EligableDonor = (props) => {
         {/* this modal here will popoup on click the button */}
         <ModalPopup open={open} handleClose={handleClose}>
           {eligiblity ? (
-            <EligibileDonorResult />
+            <EligibileDonorResult result={eligResult} />
           ) : (
-            <EligibileDonorForm setEligiblity={isEligible} />
+            <EligibileDonorForm isEligible={isEligible} />
           )}
         </ModalPopup>
       </Paper>
     </div>
   );
-}
+};
 
 export default EligableDonor;

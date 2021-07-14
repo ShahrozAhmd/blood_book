@@ -1,13 +1,32 @@
-import React from 'react'
+import React from "react";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import CancelIcon from "@material-ui/icons/Cancel";
 
 function EligiblityResult(props) {
-    return (
-        // here i need to access the checked disease by user, it will be global , i will get it
-        // from there in future, right now its not accessable
-        <div>
-            <p>Here we will show the eligiblity result of the user i.e list of diseases he have</p>
+  console.log(props.result);
+  return (
+    <div>
+      {props.result ? (
+        <div style={{ textAlign: "center" }}>
+          <h2>
+            <CancelIcon color="error" fontSize="large" />
+            <br />
+            Sorry!!! You cant be added as a Donor,
+            <br />
+            Reason: Disease
+          </h2>
         </div>
-    )
+      ) : (
+        <div style={{ textAlign: "center" }}>
+          <h2>
+            <CheckCircleIcon fontSize="large" style={{ color: "green" }} />
+            <br />
+            Congratulations!!! You are now added as a Donor
+          </h2>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default EligiblityResult
+export default EligiblityResult;

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import useStyles from './Eligibile-donor-form-styles'
+import React, { useEffect, useState } from "react";
+import useStyles from "./Eligibile-donor-form-styles";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -10,17 +10,28 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 // import ModalPopup from "../../../UI/Modal/modal";
-
-
+import { useSelector } from "react-redux";
 
 const EligibileDonorForm = (props) => {
-
+  const profile = useSelector((state) => state.profile.profileData);
   const classes = useStyles();
+  const [donorForm, setDonorForm] = useState(profile.donorForm);
 
-  const [city, setCity] = useState("");
-  const [bloodGroup, setBloodGroup] = useState("");
-  const [hasDisease, setHasDisease] = useState(false);
+  const donorFormTextFieldChangeHandler = (e) => {
+    setDonorForm({ ...donorForm, [e.target.name]: e.target.value });
+  };
 
+  const handleSubmit = () => {
+    console.log(donorForm);
+    props.isEligible(donorForm.disease);
+  };
+  useEffect(() => {
+    if (donorForm.disease) {
+      setDonorForm({ ...donorForm, wannaBeDonor: false });
+    } else {
+      setDonorForm({ ...donorForm, wannaBeDonor: true });
+    }
+  }, [donorForm.disease]);
   return (
     <>
       <Typography variant="subtitle1" gutterBottom>
@@ -34,6 +45,9 @@ const EligibileDonorForm = (props) => {
           label="City"
           variant="outlined"
           fullWidth
+          name="city"
+          value={donorForm.city}
+          onChange={donorFormTextFieldChangeHandler}
         />
         <FormControl
           fullWidth
@@ -44,8 +58,9 @@ const EligibileDonorForm = (props) => {
           <Select
             labelId="Disease"
             id="Disease"
-            // value={age}
-            // onChange={handleChange}
+            name="disease"
+            value={donorForm.disease}
+            onChange={donorFormTextFieldChangeHandler}
             label="Any Life Risk Disease"
           >
             <MenuItem value={true}>Yes</MenuItem>
@@ -55,7 +70,15 @@ const EligibileDonorForm = (props) => {
 
         <Autocomplete
           fullWidth
-          // onChange={(_, value) => setState(value)}
+          value={donorForm.donorBloodGroup}
+          onChange={(event, newValue) => {
+            if (typeof newValue === "string") {
+              setDonorForm({
+                ...donorForm,
+                donorBloodGroup: newValue,
+              });
+            }
+          }}
           options={BLOOD_GROUPS.map((option) => option.bloodType)}
           renderInput={(params) => (
             <TextField
@@ -71,13 +94,14 @@ const EligibileDonorForm = (props) => {
           color="secondary"
           className={classes.button}
           startIcon={<DoneIcon />}
+          onClick={handleSubmit}
         >
           SUBMIT
         </Button>
       </form>
     </>
   );
-}
+};
 
 const BLOOD_GROUPS = [
   { bloodType: "A+" },
@@ -89,6 +113,5 @@ const BLOOD_GROUPS = [
   { bloodType: "AB+" },
   { bloodType: "AB+" },
 ];
-
 
 export default EligibileDonorForm;

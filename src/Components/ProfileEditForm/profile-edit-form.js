@@ -34,11 +34,13 @@ function ProfileEditForm(props) {
     profile.professional
   );
   const [personalProfile, setPersonalProfile] = useState(profile.personal);
+  
 
   // console.log(generalProfile);
   // console.log(bioProfile);
   // console.log(professionalProfile);
-  console.log(personalProfile);
+  // console.log(personalProfile);
+
 
   const classes = useStyles();
 
