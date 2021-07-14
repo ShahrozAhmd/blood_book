@@ -8,12 +8,16 @@ import useStyles from "./search-styles";
 const Search = (props) => {
   const [state, setState] = useState(null);
   const classes = useStyles();
-
+  console.log(state)
   return (
     <Fragment>
       <Box display="flex" className={classes.searchBoxContainer}>
         <Box style={{ width: 150 }} className={classes.searchbox}>
           <Autocomplete
+          value = {state}
+          onChange = {(event, newValue) => {
+            if (typeof newValue === 'string') {
+              setState( newValue )}}}
             onChange={(_, value) => setState(value)}
             id="free-solo-demo"
             options={bloodGroups.map((option) => option.bloodType)}

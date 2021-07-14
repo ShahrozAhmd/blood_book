@@ -35,9 +35,9 @@ function ProfileEditForm(props) {
   );
   const [personalProfile, setPersonalProfile] = useState(profile.personal);
 
-  console.log(generalProfile);
-  console.log(bioProfile);
-  console.log(professionalProfile);
+  // console.log(generalProfile);
+  // console.log(bioProfile);
+  // console.log(professionalProfile);
   console.log(personalProfile);
 
   const classes = useStyles();
@@ -63,6 +63,13 @@ function ProfileEditForm(props) {
 
   const personalTextFieldChangeHandler = (e) => {
     setPersonalProfile({ ...personalProfile, [e.target.name]: e.target.value });
+  };
+
+  const professionalTextFieldChangeHandler = (e) => {
+    setProfessionalProfile({
+      ...professionalProfile,
+      [e.target.name]: e.target.value,
+    });
   };
 
   switch (props.toEdit) {
@@ -275,9 +282,15 @@ function ProfileEditForm(props) {
 
           <Autocomplete
             fullWidth
-             onChange={(_, value) => setPersonalProfile({ ...personalProfile, value })}
             value={personalProfile.bloodGroup}
-            onChange={personalTextFieldChangeHandler}
+            onChange={(event, newValue) => {
+              if (typeof newValue === "string") {
+                setPersonalProfile({
+                  ...personalProfile,
+                  bloodGroup: newValue,
+                });
+              }
+            }}
             options={BLOOD_GROUPS.map((option) => option.bloodType)}
             renderInput={(params) => (
               <TextField
@@ -309,6 +322,9 @@ function ProfileEditForm(props) {
             variant="outlined"
             fullWidth
             m={-2}
+            name="education"
+            value={professionalProfile.educaiton}
+            onChange={professionalTextFieldChangeHandler}
           />
 
           <TextField
@@ -316,6 +332,9 @@ function ProfileEditForm(props) {
             label="Occupation"
             variant="outlined"
             fullWidth
+            name="occupation"
+            value={professionalProfile.occupation}
+            onChange={professionalTextFieldChangeHandler}
           />
 
           <TextField
@@ -324,6 +343,9 @@ function ProfileEditForm(props) {
             variant="outlined"
             placeholder="use (,) separation to add multiple languages you can speak"
             fullWidth
+            name="languages"
+            value={professionalProfile.languages}
+            onChange={professionalTextFieldChangeHandler}
           />
 
           <Button
