@@ -12,7 +12,8 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateProfileData } from "../../store/actions/profile_actions";
 
 const BLOOD_GROUPS = [
   { bloodType: "A+" },
@@ -27,6 +28,7 @@ const BLOOD_GROUPS = [
 
 function ProfileEditForm(props) {
   const profile = useSelector((state) => state.profile.profileData);
+  const dispatch = useDispatch();
   // chunks of profile:
   const [generalProfile, setGeneralProfile] = useState(profile.general);
   const [bioProfile, setBioProfile] = useState(profile.bio);
@@ -34,13 +36,11 @@ function ProfileEditForm(props) {
     profile.professional
   );
   const [personalProfile, setPersonalProfile] = useState(profile.personal);
-  
 
   // console.log(generalProfile);
   // console.log(bioProfile);
   // console.log(professionalProfile);
   // console.log(personalProfile);
-
 
   const classes = useStyles();
 
@@ -72,6 +72,21 @@ function ProfileEditForm(props) {
       ...professionalProfile,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const updateDataHandler = (chunkName) => {
+    let uid = localStorage.getItem("uid");
+    switch (chunkName) {
+      case "bio":
+        dispatch(updateProfileData(uid, bioProfile, chunkName));
+        break;
+      case "personal":
+        dispatch(updateProfileData(uid, personalProfile, chunkName));
+        break;
+      case "professional":
+        dispatch(updateProfileData(uid, professionalProfile, chunkName));
+        break;
+    }
   };
 
   switch (props.toEdit) {
@@ -197,6 +212,7 @@ function ProfileEditForm(props) {
             color="secondary"
             className={classes.button}
             startIcon={<DoneIcon />}
+            onClick={updateDataHandler("bio")}
           >
             UPDATE
           </Button>
@@ -309,6 +325,7 @@ function ProfileEditForm(props) {
             color="secondary"
             className={classes.button}
             startIcon={<DoneIcon />}
+            onClick={updateDataHandler("personal")}
           >
             UPDATE
           </Button>
@@ -355,6 +372,7 @@ function ProfileEditForm(props) {
             color="secondary"
             className={classes.button}
             startIcon={<DoneIcon />}
+            onClick={updateDataHandler("professional")}
           >
             UPDATE
           </Button>

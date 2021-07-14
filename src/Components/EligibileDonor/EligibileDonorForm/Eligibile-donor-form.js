@@ -10,10 +10,12 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 // import ModalPopup from "../../../UI/Modal/modal";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateProfileData } from "../../../store/actions/profile_actions";
 
 const EligibileDonorForm = (props) => {
   const profile = useSelector((state) => state.profile.profileData);
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [donorForm, setDonorForm] = useState(profile.donorForm);
 
@@ -24,6 +26,7 @@ const EligibileDonorForm = (props) => {
   const handleSubmit = () => {
     console.log(donorForm);
     props.isEligible(donorForm.disease);
+    updateDonorForm();
   };
   useEffect(() => {
     if (donorForm.disease) {
@@ -32,6 +35,13 @@ const EligibileDonorForm = (props) => {
       setDonorForm({ ...donorForm, wannaBeDonor: true });
     }
   }, [donorForm.disease]);
+
+  const updateDonorForm = () => {
+    let uid = localStorage.getItem("uid");
+
+    dispatch(updateProfileData(uid, donorForm, "donorForm"));
+  };
+
   return (
     <>
       <Typography variant="subtitle1" gutterBottom>

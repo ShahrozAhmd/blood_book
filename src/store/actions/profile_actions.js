@@ -152,6 +152,44 @@ const loadProfileOnRefreshInit = () => {
         });
     };
   };
+// ==========================================================
+  const updateProfileDataInit = () => {
+    return{
+      type: actionType.UPDATE_PROFILE_DATA_INIT
+    }
+  }
+
+  const updateProfileDataSuccess = (data) => {
+    return{
+      type: actionType.UPDATE_PROFILE_DATA_SUCCESS,
+      data: data
+    }
+  }
+
+  const updateProfileDataFailed = (err) => {
+    return{
+      type: actionType.UPDATE_PROFILE_DATA_SUCCESS,
+      error: err
+    }
+  }
+
+  const updateProfileData = (uid, data, chunk) =>{
+    return (dispatch)=>{
+      dispatch(updateProfileDataInit());
+      const getWholeProfile = db.collection("profiles").doc(uid);
+      getWholeProfile.update({[`${chunk}`]: data})
+      .then((res) => {
+          console.log("Document successfully updated!");
+          dispatch(updateProfileDataSuccess(res))
+      })
+      .catch((error) => {
+          console.error("Error updating document: ", error);
+          dispatch(updateProfileDataFailed(error))
+      });
+    }
+  }
+
+
 
 export {
   setEmptyProfileOnEmailSignUp,
@@ -159,5 +197,6 @@ export {
   loadProfileOnSignIn,
   vanishProfileOnSignOut,
   setProfileRealTime,
-  loadProfileOnRefresh
+  loadProfileOnRefresh,
+  updateProfileData
 };
