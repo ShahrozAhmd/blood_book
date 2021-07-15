@@ -23,6 +23,14 @@ const EligibileDonorForm = (props) => {
     setDonorForm({ ...donorForm, [e.target.name]: e.target.value });
   };
 
+  const donorFormCityTextFieldChangeHandler = (e) => {
+    setDonorForm({
+      ...donorForm,
+      [e.target.name]:
+        e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1).toLowerCase(),
+    });
+  };
+
   const handleSubmit = () => {
     console.log(donorForm);
     props.isEligible(donorForm.disease);
@@ -57,7 +65,7 @@ const EligibileDonorForm = (props) => {
           fullWidth
           name="city"
           value={donorForm.city}
-          onChange={donorFormTextFieldChangeHandler}
+          onChange={donorFormCityTextFieldChangeHandler}
         />
         <FormControl
           fullWidth

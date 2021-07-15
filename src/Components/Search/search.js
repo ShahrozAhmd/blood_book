@@ -4,27 +4,55 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Box, Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import useStyles from "./search-styles";
+import { useDispatch,useSelector } from "react-redux";
+import { search } from "../../store/actions/search_actions";
+import ModalPopup from "../../UI/Modal/modal";
+import SearchResults from './search-results'
+import Loader from "../../UI/Loader/loader";
 
 const Search = (props) => {
-  const [state, setState] = useState(null);
+  const state = useSelector(state => state.searched.searchedResult)
+  const dispatch = useDispatch();
+console.log(state)
   const classes = useStyles();
-  console.log(state)
+
+  const [open, setOpen] = useState(false);
+
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [bloodGroup, setBloodGroup] = useState("");
+  const [city, setCity] = useState("");
+
+  console.log(bloodGroup);
+  console.log(city);
+
+  const searchHandler = () => {
+    setOpen(true);
+    dispatch(search(bloodGroup,city))
+
+  };
+
   return (
     <Fragment>
       <Box display="flex" className={classes.searchBoxContainer}>
         <Box style={{ width: 150 }} className={classes.searchbox}>
           <Autocomplete
-          value = {state}
-          onChange = {(event, newValue) => {
-            if (typeof newValue === 'string') {
-              setState( newValue )}}}
-            onChange={(_, value) => setState(value)}
-            id="free-solo-demo"
+            value={bloodGroup}
+            onChange={(event, newValue) => {
+              if (typeof newValue === "string") {
+                setBloodGroup(newValue);
+              }
+            }}
             options={bloodGroups.map((option) => option.bloodType)}
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Blood Group"
+                label="bloodgroup"
                 margin="normal"
                 variant="outlined"
               />
@@ -34,13 +62,17 @@ const Search = (props) => {
 
         <Box style={{ width: 300 }}>
           <Autocomplete
-            onChange={(_, value) => setState(value)}
-            id="free-solo-demo"
+            value={city}
+            onChange={(event, newValue) => {
+              if (typeof newValue === "string") {
+                setCity(newValue);
+              }
+            }}
             options={cities.map((option) => option)}
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Location"
+                label="city"
                 margin="normal"
                 variant="outlined"
               />
@@ -49,15 +81,21 @@ const Search = (props) => {
         </Box>
 
         <Button
+          fullWidth
           variant="oulined"
           color="primary"
           size="large"
           // className={classes.button}
           startIcon={<SearchIcon />}
+          onClick= {searchHandler}
         >
-          Find
+          Find Donor
         </Button>
       </Box>
+      <ModalPopup open={open} handleClose={handleClose}>
+        <Loader/>
+        <SearchResults/>
+      </ModalPopup>
     </Fragment>
   );
 };

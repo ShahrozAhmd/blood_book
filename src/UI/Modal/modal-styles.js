@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     width: "40%",
-    height: "100%",
+    // height: "100%",
     padding:"3%",
     display: "flex",
     alignItems: "center",
