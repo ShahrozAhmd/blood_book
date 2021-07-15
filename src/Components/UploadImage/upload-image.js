@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateProfileData } from "../../store/actions/profile_actions";
 
 const UploadImage = (props) => {
-
   let uid = localStorage.getItem("uid");
   const classes = useStyles();
 
@@ -18,6 +17,7 @@ const UploadImage = (props) => {
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
   const [imageURL, setImageURL] = useState(null);
+  const [getimageURL, setGetImageURL] = useState(false);
 
   const inputChangeHandler = (e) => {
     console.log(e.target.files[0]);
@@ -43,18 +43,21 @@ const UploadImage = (props) => {
           .getDownloadURL()
           .then((url) => {
             setImageURL(url);
-            // console.log(url);
-            setGeneralProfile({ ...generalProfile, profileImage: url });
-            console.log(generalProfile);
           });
       }
     );
   };
 
   useEffect(() => {
-    if (imageURL != null) {
+    // if (generalProfile.profileImage === "") {
+    //
+    // }
+    setGeneralProfile({ ...generalProfile, profileImage: imageURL });
+    setTimeout(() => {
       dispatch(updateProfileData(uid, generalProfile, "general"));
-    }
+    }, 5000);
+
+    console.log(imageURL);
   }, [imageURL]);
   return (
     <div style={{ width: "100%" }}>
@@ -68,7 +71,9 @@ const UploadImage = (props) => {
       />
       <label style={{ width: "100%" }} htmlFor="contained-button-file">
         <Button fullWidth variant="contained" color="primary" component="span">
-          {generalProfile.profileImage !=="" ? "Change Profile Image": "Choose Profile Image"}
+          {generalProfile.profileImage !== ""
+            ? "Change Profile Image"
+            : "Choose Profile Image"}
         </Button>
       </label>
       <Button

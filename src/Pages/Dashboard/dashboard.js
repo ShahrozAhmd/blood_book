@@ -14,20 +14,27 @@ function Dashboard(props) {
   // useEffect(() => {
   //   db.collection("posts")
   //     .add({
-  //       userName: "dummy name",
-  //       userProfileId: 'dummy id',
-  //       isDonorRequest: false,
-  //       isReceiverRequest: false,
-  //       amount : 0,
-  //       bloodType:"A+",
-  //       createdDate: timeStamp,
-  //       deadline :"July 25, 2021 at 1:00:00 AM UTC+5",
-  //       id: "007",
-  //       isPaid :false,
-  //       isUrgent :true,
-  //       message:  "i need blood",
-  //       noOfBottles : 5,
-  //       media: {image: "url",video: "url",document:"url",location:"points"}
+        // creatorUserName: null,
+        // creatorUid: null,
+        // creatorCity: false,
+        // creatorEmail: null,
+        // creatorPhoneNumber: null,
+        // creatorWannaBeDonor: null,
+        // creatorShortIntro: null,
+        // creatorbloodGroup: null,
+        // creatorProfileImage: null,
+        // creatorLanguage: null,
+        // creatorGender: null,
+        // createdDate: timeStamp,
+        // isReceiverRequest: false,
+        // amount : null,
+        // bloodType:null,
+        // deadline :null,
+        // isPaid :null,
+        // isUrgent :null,
+        // message:  null,
+        // noOfBottles : 5,
+        // media: {image: "url",video: "url",document:"url",location:"points"}
   //     })
   //     .then((res) => {
   //       console.log("Document written with ID: ", res);
@@ -42,7 +49,6 @@ function Dashboard(props) {
       <CssBaseline />
       <Container disableGutters maxWidth={1}>
         <Header />
-
         <Container maxWidth="md">
           <Box display="flex" className={classes.main} justifyContent="center">
             {/* main */}

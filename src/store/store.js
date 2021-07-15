@@ -3,10 +3,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import authReducer from "./reducers/auth_reducer";
 import profileReducer from "./reducers/profile_reducer";
+import postsReducer from './reducers/post_reducer'
 
 const rootReducer = combineReducers({
   authentication: authReducer,
   profile: profileReducer,
+  posts: postsReducer,
 });
 
 const store = createStore(

@@ -29,23 +29,25 @@ import { withStyles } from "@material-ui/core/styles";
 import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
 
 const ShowPost = (props) => {
-  console.log(props.data);
+  console.log(props.post);
   const classes = useStyles();
   //   states
-  const [expanded, setExpanded] = useState(false);
+  // const [expanded, setExpanded] = useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const handleExpandClick = () => {
+  //   setExpanded(!expanded);
+  // };
 
   return (
+    
     <Fragment>
       <Box className={classes.root}>
         <Card>
           {/* header section of post box */}
+          {/* urgent bar */}
           <Box
             className={
-              props.data.isUrgent
+              props.post.isUrgent != false
                 ? classes.urgentBarShow
                 : classes.urgentBarHide
             }
@@ -58,7 +60,12 @@ const ShowPost = (props) => {
 
           <CardHeader
             avatar={
-              <Avatar aria-label="profile-picture" className={classes.avatar}>
+              <Avatar
+              src= {props.post.creatorProfileImage != null?
+                props.post.creatorProfileImage:
+                "/static/images/avatar/1.jpg"}
+               aria-label="profile-picture" 
+               className={classes.avatar}>
                 U
               </Avatar>
             }
@@ -72,16 +79,17 @@ const ShowPost = (props) => {
             //         Karachi, Pakistan
             //     </Typography>
             //   }
-            title={props.data.userName}
-            subheader={"1 july"}
+            title={props.post.creatorUserName}
+            // subheader={props.post.createdDate.seconds}
           />
           {/* header section of post box ends here..*/}
 
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              {props.data.message}
+              {props.post.message}
             </Typography>
           </CardContent>
+
           {/* Custom section 01 */}
           <CardActions>
             <Box
@@ -141,12 +149,12 @@ const ShowPost = (props) => {
               style={{ width: "100%" }}
             >
               <Box style={{ display: "inline", margin: 0, padding: 0 }}>
-                {/* <Typography>A+</Typography> */}
+                <Typography>{props.post.bloodGroup != null ?props.post.bloodGroup :"Blood Group"}</Typography>
                 <FaTint size={"1.7em"} style={{ color: "red" }} />
               </Box>
               <Box>
                 <FaBong size={"1.7em"} style={{ color: "skyBlue" }} />
-                {/* <Typography>A+</Typography> */}
+                <Typography>{props.post.noOfBottles != null ?props.post.noOfBottles :"Blood Bottles"}</Typography>
               </Box>
             </Box>
           </CardActions>
@@ -159,11 +167,11 @@ const ShowPost = (props) => {
             >
               <Box>
                 <CalendarTodayIcon />
-                <Typography>{props.data.deadline}</Typography>
+                <Typography>{props.post.deadline}</Typography>
               </Box>
               <Box>
                 <LocalAtmIcon />
-                <Typography>{props.data.amount}</Typography>
+                <Typography>{props.post.amount}</Typography>
               </Box>
             </Box>
           </CardActions>

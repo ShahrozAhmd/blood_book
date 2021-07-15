@@ -13,7 +13,7 @@ import CreatePost from "./create-post";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-//modal styling code
+//modal styling code starts here
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -28,6 +28,9 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
+
+//modal styling code ends here
+
 
 const CreatePostContainer = (props) => {
   const classes = useStyles();
@@ -52,6 +55,7 @@ const CreatePostContainer = (props) => {
             <CardActionArea>
               <CardContent>
                 <Box>
+                  {/* box to click to write request */}
                   <Typography
                     className={classes.postTexField}
                     variant="subtitle1"

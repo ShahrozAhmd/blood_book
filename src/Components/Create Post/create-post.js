@@ -17,8 +17,13 @@ import { Box } from "@material-ui/core";
 import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
-
+import { useSelector, useDispatch } from "react-redux";
+import {timeStamp} from '../../config/firebase_config'
+import {createPost} from '../../store/actions/post_actions'
 const CreatePost = (props) => {
+  const state = useSelector((state) => state.profile.profileData);
+  const dispatch = useDispatch();
+
   const classes = useStyles();
   // set message
   const [message, setMessage] = useState("");
@@ -27,9 +32,7 @@ const CreatePost = (props) => {
   // state for no of bottle of blood option
   const [bottles, setBottles] = useState("");
   //set amount option state
-  const [amount, setAmount] = useState({
-    amount: "",
-  });
+  const [amount, setAmount] = useState("");
   // time and date:
   const [timeDate, setTimeDate] = useState("");
 
@@ -76,15 +79,52 @@ const CreatePost = (props) => {
     const noOfBottles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
     return noOfBottles.map((item) => <MenuItem value={item}>{item}</MenuItem>);
   };
+  var postObj={}
+  var allProfileData = {};
+  var a = state;
+  var profileData = {
+    ...a,
+  };
+  var uid =
+    localStorage.getItem("uid") != null ? localStorage.getItem("uid") : null
 
   useEffect(() => {
-    console.log(timeDate);
-    console.log(message);
-    console.log(bloodGroup);
-    console.log(bottles);
-    console.log(amount);
-    console.log(switchButton.urgentBlood);
-    console.log(switchButton.paidBlood);
+     postObj = {
+      creatorUserName: profileData.general.name,
+      creatorUid: uid,
+      creatorCity: profileData.bio.city,
+      creatorEmail: profileData.bio.email,
+      creatorPhoneNumber: profileData.bio.phoneNumber,
+      creatorWannaBeDonor: profileData.donorForm.wannaBeDonor,
+      creatorShortIntro: profileData.bio.shortIntro,
+      creatorbloodGroup: profileData.personal.bloodGroup,
+      creatorProfileImage: profileData.general.profileImage,
+      creatorLanguage: profileData.professional.languages,
+      creatorGender: profileData.personal.gender,
+      createdDate: timeStamp,
+      isReceiverRequest: null,
+      amount: amount,
+      bloodGroup: bloodGroup,
+      deadline: timeDate,
+      isPaid: switchButton.paidBlood,
+      isUrgent: switchButton.urgentBlood,
+      message: message,
+      noOfBottles: bottles,
+      media: {
+        image: null,
+        video: null,
+        document: null,
+        location: null,
+      },
+    };
+    // console.log(postObj)
+    // console.log(timeDate);
+    // console.log(message);
+    // console.log(bloodGroup);
+    // console.log(bottles);
+    // console.log(amount);
+    // console.log(switchButton.urgentBlood);
+    // console.log(switchButton.paidBlood);
   }, [
     timeDate,
     message,
@@ -94,6 +134,11 @@ const CreatePost = (props) => {
     switchButton.urgentBlood,
     switchButton.paidBlood,
   ]);
+  // console.log(post)
+
+  const creatPostHandler = () => {
+    dispatch(createPost(postObj));
+  }
 
   return (
     <Box className={classes.createpostbox}>
@@ -133,7 +178,7 @@ const CreatePost = (props) => {
               </label>
             </Box>
 
-            <Box>
+            {/* <Box>
               <input
                 accept="image/*"
                 className={classes.input}
@@ -185,7 +230,7 @@ const CreatePost = (props) => {
                   <AddLocationIcon />
                 </IconButton>
               </label>
-            </Box>
+            </Box> */}
           </Box>
 
           <Box display="flex" justifyContent="space-between">
@@ -267,7 +312,7 @@ const CreatePost = (props) => {
                 </InputLabel>
                 <Input
                   id="standard-adornment-amount"
-                  value={amount.amount}
+                  value={amount}
                   onChange={handleAmountChange}
                   startAdornment={
                     <InputAdornment position="start">Rs</InputAdornment>
@@ -277,7 +322,9 @@ const CreatePost = (props) => {
             </Box>
           </Box>
 
-          <Button variant="contained" color="primary">
+          <Button
+            onClick = {creatPostHandler}
+          variant="contained" color="primary">
             POST
           </Button>
         </Box>

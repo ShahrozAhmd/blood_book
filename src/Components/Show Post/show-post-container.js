@@ -5,25 +5,30 @@ import { db } from "../../config/firebase_config";
 
 const ShowPostContainer = () => {
   const classes = useStyles();
-  const [data, setData] = useState([])
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
     db.collection("posts").onSnapshot((res) => {
 
-      setData(res.docs.map(item => {
+      setPosts(res.docs.map(item => {
         return({
-          id: item.id,
-          user: item.data()
+          postid: item.id,
+           ...item.data()
         })
+        // return({
+        //   id: item.id,
+        //   user: item.data()
+        // })
       }))
     });
+
   }, []);
-console.log(data)
+console.log(posts)
   return (
     <div>
-      {data && data.map((item) => {
+      {posts && posts.map((item) => {
         return(
-          <ShowPost key={item.id} id={item.id} data={item.user} />
+          <ShowPost abc = {false} key={item.postid} id={item.creatorUid} post={item} />
         )
       })}
     </div>
