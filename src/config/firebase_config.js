@@ -2,6 +2,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage"
 
 const firebaseConfig = {
   apiKey: "AIzaSyABDsZz3zthfTvAOAt5AB0oYCxyWYM1ag4",
@@ -28,4 +29,7 @@ const db = firebase.firestore();
 // server timem, it noted the time when the server hit with the update.
 const timeStamp  = firebase.firestore.FieldValue.serverTimestamp();
 
-export { firebaseAuth, provider, db, timeStamp };
+// Get a reference to the storage service, which is used to create references in your storage bucket
+const storage = firebase.storage();
+
+export { firebaseAuth, provider, db, timeStamp, storage };

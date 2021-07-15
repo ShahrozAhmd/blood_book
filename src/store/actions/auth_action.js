@@ -9,33 +9,62 @@ import {
 
 var obj = {
   general: {
-    profileImage: "string(url)",
-    name: "string",
+    profileImage: null,
+    name: null,
   },
   bio: {
-    email: "string",
-    phoneNumber: "string",
-    city: "string",
-    shortIntro: "string",
+    email: null,
+    phoneNumber: null,
+    city: null,
+    shortIntro: null,
   },
   personal: {
-    age: 22,
-    gender: "string",
-    maritalStatus: "string",
-    bloodGroup: "string",
+    age: null,
+    gender: null,
+    maritalStatus: null,
+    bloodGroup: null,
   },
   professional: {
-    education: "string",
-    occupation: "string",
-    languages: ["string1", "string2"],
+    education: null,
+    occupation: null,
+    languages: [null, null],
   },
   donorForm: {
     wannaBeDonor: false,
-    city: "string",
+    city: null,
     disease: true,
-    donorBloodGroup: "string",
+    donorBloodGroup: null,
   },
 };
+// var obj = {
+//   general: {
+//     profileImage: "string(url)",
+//     name: "string",
+//   },
+//   bio: {
+//     email: "string",
+//     phoneNumber: "string",
+//     city: "string",
+//     shortIntro: "string",
+//   },
+//   personal: {
+//     age: 22,
+//     gender: "string",
+//     maritalStatus: "string",
+//     bloodGroup: "string",
+//   },
+//   professional: {
+//     education: "string",
+//     occupation: "string",
+//     languages: ["string1", "string2"],
+//   },
+//   donorForm: {
+//     wannaBeDonor: false,
+//     city: "string",
+//     disease: true,
+//     donorBloodGroup: "string",
+//   },
+// };
 
 // SignIn with email actions
 const signInWithEmailInit = () => {

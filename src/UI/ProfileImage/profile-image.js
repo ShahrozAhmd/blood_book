@@ -4,14 +4,15 @@ import Avatar from "@material-ui/core/Avatar";
 
 
 
-export default function ImageAvatars() {
+export default function ImageAvatars(props) {
   const classes = useStyles();
-
+  
+    console.log(props.image)
   return ( 
     <div className={classes.root}>
       <Avatar
         alt="Remy Sharp"
-        src="/static/images/avatar/1.jpg"
+        src={props.image? props.image: "/static/images/avatar/1.jpg"}
         className={classes.large}
       />
     </div>

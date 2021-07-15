@@ -41,7 +41,19 @@ function Profile(props) {
     setWhichToEdit(null);
     setOpen(false);
   };
-
+  // this is a realtime listner for our profile data, it listen evry changes in our profile
+  // document in firestore and update the global local store
+  useEffect(() => {
+    // console.log(auth.uid)
+    if (localStorage.getItem("uid") != null) {
+      db.collection("profiles")
+        .doc(localStorage.getItem("uid"))
+        .onSnapshot((doc) => {
+          // var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
+          dispatch(setProfileRealTime(doc.data()));
+        });
+    }
+  }, []);
   return profile ? (
     <Fragment>
       <CssBaseline />
@@ -77,7 +89,7 @@ function Profile(props) {
           <Box display="flex" flexDirection="column" flexWrap="wrap">
             <ProfileEditButton name="general" clicked={handleOpen} />
             <Box style={{ padding: "2%" }}>
-              <ProfileImage />
+              <ProfileImage image = {profile.general.profileImage? profile.general.profileImage: null}/>
               <br />
               <Typography variant="h6" gutterBottom>
                 {profile.general.name ? profile.general.name : "Your Name"}
@@ -247,7 +259,7 @@ function Profile(props) {
       {/* modal rendering code execute on state change*/}
       <ModalPopup open={open} handleClose={handleClose}>
         {/* children for modal , specific for form section data updation */}
-        <ProfileEditForm toEdit={whichToEdit} />
+        <ProfileEditForm toEdit={whichToEdit} handleClose={handleClose}/>
       </ModalPopup>
     </Fragment>
   ) : null;

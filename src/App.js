@@ -38,21 +38,20 @@ function App() {
 
   // this is a realtime listner for our profile data, it listen evry changes in our profile
   // document in firestore and update the global local store
-  useEffect(() => {
-    // console.log(auth.uid)
-    db.collection("profiles")
-      .doc(localStorage.getItem("uid"))
-      .onSnapshot((doc) => {
-        var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
-      
-          dispatch(setProfileRealTime(doc.data()));
-               
-      });
-  }, []);
+  // useEffect(() => {
+  //   // console.log(auth.uid)
+  //   if (localStorage.getItem("uid") != null) {
+  //     db.collection("profiles")
+  //       .doc(localStorage.getItem("uid"))
+  //       .onSnapshot((doc) => {
+  //         // var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
+  //         dispatch(setProfileRealTime(doc.data()));
+  //       });
+  //   }
+  // }, []);
 
   useEffect(() => {
-    
-    if (localStorage.getItem("uid")) {
+    if (localStorage.getItem("uid") != null) {
       const uid = localStorage.getItem("uid");
       dispatch(loadProfileOnRefresh(uid));
     }

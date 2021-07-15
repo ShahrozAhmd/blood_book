@@ -14,6 +14,7 @@ import Select from "@material-ui/core/Select";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfileData } from "../../store/actions/profile_actions";
+import UploadImage from "../UploadImage/upload-image";
 
 const BLOOD_GROUPS = [
   { bloodType: "A+" },
@@ -58,7 +59,9 @@ function ProfileEditForm(props) {
       [event.target.name]: event.target.checked,
     });
   };
-
+  const generalTextFieldChangeHandler = (e) => {
+    setGeneralProfile({ ...generalProfile, [e.target.name]: e.target.value });
+  };
   const bioTextFieldChangeHandler = (e) => {
     setBioProfile({ ...bioProfile, [e.target.name]: e.target.value });
   };
@@ -86,6 +89,9 @@ function ProfileEditForm(props) {
       case "professional":
         dispatch(updateProfileData(uid, professionalProfile, chunkName));
         break;
+      case "general":
+        dispatch(updateProfileData(uid, generalProfile, chunkName));
+        break;
     }
   };
 
@@ -93,34 +99,22 @@ function ProfileEditForm(props) {
     case "general":
       return (
         <form className={classes.root} noValidate autoComplete="off">
-          <input
-            accept="image/*"
-            className={classes.input}
-            id="contained-button-file"
-            type="file"
-          />
-          <label style={{ width: "100%" }} htmlFor="contained-button-file">
-            <Button
-              fullWidth
-              variant="contained"
-              color="primary"
-              component="span"
-            >
-              Upload Profile Image
-            </Button>
-          </label>
+          <UploadImage />
           <TextField
             style={{ marginTop: "3%" }}
             id="outlined-basic"
             label="Name"
             variant="outlined"
             fullWidth
+            name="name"
+            onChange={generalTextFieldChangeHandler}
           />
           <Button
             variant="contained"
             color="secondary"
             className={classes.button}
             startIcon={<DoneIcon />}
+            onClick={updateDataHandler("general")}
           >
             UPDATE
           </Button>
