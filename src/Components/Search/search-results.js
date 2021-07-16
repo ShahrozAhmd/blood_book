@@ -15,91 +15,146 @@ import WcIcon from "@material-ui/icons/Wc";
 import PhoneIcon from "@material-ui/icons/Phone";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import Divider from "@material-ui/core/Divider";
-import Chip from '@material-ui/core/Chip';
+import CancelIcon from "@material-ui/icons/Cancel";
+import { RotateSpinner } from "react-spinners-kit";
+
 const SearchResults = (props) => {
   const classes = useStyles();
+  const search = useSelector((state) => state.searched);
 
-  // const searchResult =  useSelector(state => state.searched.searchedResult);
-  const searchResult = [1, 2];
+  // const loader = <PushSpinner/>
 
-  const showOnNoResult = searchResult.map((item) => {
-    return (
-      <div className={classes.root}>
-        <Card className={classes.card} key={item}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label="profile-picture" className={classes.avatar}>
-                U
-              </Avatar>
-            }
-            title={props.hospital ? "Hospital Name" : "User Name"}
-            subheader="Karachi, Pakistan"
-          />
-          {/* 2nd row */}
-          <Divider variant="middle" />
-          <Box
-            display="flex"
-            justifyContent="space-around"
-            style={{ width: "100%", padding: "1%" }}
-          >
-            <Box>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <InvertColorsIcon
-                  style={{ color: "red", display: "inline-block" }}
+  const notFound = (
+    <div style={{ textAlign: "center" }}>
+      <h2>
+        <CancelIcon color="error" fontSize="large" />
+        <br />
+        Sorry!!! No Donor Is Available With This City And Blood Group
+      </h2>
+    </div>
+  );
+
+  const showOnNoResult =
+    search.searchedResult != ""
+      ? search.searchedResult.map((item) => {
+          return (
+            <div className={classes.root}>
+              <Card elevation={3} className={classes.card} key={item}>
+                <CardHeader
+                  avatar={
+                    <Avatar
+                      aria-label="profile-picture"
+                      className={classes.avatar}
+                      src={
+                        item.general.profileImage
+                          ? item.general.profileImage
+                          : "/static/images/avatar/1.jpg"
+                      }
+                    />
+                  }
+                  title={
+                    item.general.name ? item.general.name : "Donor User Name"
+                  }
+                  subheader={item.bio.city ? item.bio.city : "Donor City"}
                 />
-                A+
-              </Typography>
-            </Box>
+                {/* 2nd row */}
+                <Divider variant="middle" />
+                <Box
+                  display="flex"
+                  justifyContent="space-around"
+                  style={{ width: "100%", padding: "1%" }}
+                >
+                  <Box>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      <InvertColorsIcon
+                        style={{ color: "red", display: "inline-block" }}
+                      />
+                      {item.donorForm.donorBloodGroup
+                        ? item.donorForm.donorBloodGroup
+                        : "Donor Blood Group"}
+                    </Typography>
+                  </Box>
 
-            <Box>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <PermContactCalendarIcon
-                  style={{ color: "red", display: "inline-block" }}
-                />
-                23 Years
-              </Typography>
-            </Box>
+                  <Box>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      <PermContactCalendarIcon
+                        style={{ color: "red", display: "inline-block" }}
+                      />
+                      {item.personal.age
+                        ? item.personal.age + " Years"
+                        : "Donor Age"}
+                    </Typography>
+                  </Box>
 
-            <Box>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <WcIcon style={{ color: "red", display: "inline-block" }} />
-                Male
-              </Typography>
-            </Box>
-          </Box>
-          <Divider variant="middle" />
-          {/* 3rd row */}
-          <Box
-            display="flex"
-            justifyContent="space-around"
-            style={{ width: "100%", padding: "1%" }}
-          >
-            <Box>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <PhoneIcon style={{ color: "red", display: "inline-block" }} />
-                03323142746
-              </Typography>
-            </Box>
+                  <Box>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      <WcIcon
+                        style={{ color: "red", display: "inline-block" }}
+                      />
+                      {item.personal.gender
+                        ? item.personal.gender
+                        : "Donor Gender"}
+                    </Typography>
+                  </Box>
+                </Box>
+                <Divider variant="middle" />
+                {/* 3rd row */}
+                <Box
+                  display="flex"
+                  justifyContent="space-around"
+                  style={{ width: "100%", padding: "1%" }}
+                >
+                  <Box>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      <PhoneIcon
+                        style={{ color: "red", display: "inline-block" }}
+                      />
+                      {item.bio.phoneNumber
+                        ? item.bio.phoneNumber
+                        : "Donor Phone Number"}
+                    </Typography>
+                  </Box>
 
-            <Box>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <DraftsIcon style={{ color: "red", display: "inline-block" }} />
-                shahrozahmed286@gmail.com
-              </Typography>
-            </Box>
-          </Box>
-        </Card>
-      </div>
-    );
-  });
+                  <Box>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      <DraftsIcon
+                        style={{ color: "red", display: "inline-block" }}
+                      />
+                      {item.bio.email ? item.bio.email : "Donor Email"}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Card>
+            </div>
+          );
+        })
+      : notFound;
 
-  // const showOnResult;
-  // const showOnError;
-
-  return showOnNoResult;
-  // <div>
-  //    {searchResult.length == 0? <h1>null</h1>: <h3>no null</h3>}
-  // </div>
+  return search.loading ? (
+    <RotateSpinner size={45} color="#207398" loading />
+  ) : (
+    showOnNoResult
+  );
 };
 
 export default SearchResults;

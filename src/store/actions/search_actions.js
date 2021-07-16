@@ -22,23 +22,23 @@ const searchFailed = (err) => {
 };
 
 const search = (bloodGroup, city) => {
-
+  var res = [];
   return (dispatch) => {
     dispatch(searchInit());
     db.collection("profiles")
-    .where("donorForm.donorBloodGroup", "==", bloodGroup)
-    .where("donorForm.city", "==", city)
+      .where("donorForm.donorBloodGroup", "==", bloodGroup)
+      .where("donorForm.city", "==", city)
+      .where("donorForm.wannaBeDonor", "==", true)
       .get()
       .then((querySnapshot) => {
-        
         querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          dispatch(searchSuccess(doc.data()))
+          res.push(doc.data());
           console.log(doc.id, " => ", doc.data());
         });
+        dispatch(searchSuccess(res));
       })
       .catch((error) => {
-        dispatch(searchFailed(error))
+        dispatch(searchFailed(error));
         console.log("Error getting documents: ", error);
       });
   };

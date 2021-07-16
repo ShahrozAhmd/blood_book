@@ -4,26 +4,24 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Box, Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import useStyles from "./search-styles";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { search } from "../../store/actions/search_actions";
 import ModalPopup from "../../UI/Modal/modal";
-import SearchResults from './search-results'
+import SearchResults from "./search-results";
 import Loader from "../../UI/Loader/loader";
 
 const Search = (props) => {
-  const state = useSelector(state => state.searched.searchedResult)
+  const state = useSelector((state) => state.searched.searchedResult);
   const dispatch = useDispatch();
-console.log(state)
+  console.log(state);
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
 
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
-
   const handleClose = () => {
     setOpen(false);
+    setBloodGroup("");
+    setCity("");
   };
   const [bloodGroup, setBloodGroup] = useState("");
   const [city, setCity] = useState("");
@@ -33,8 +31,7 @@ console.log(state)
 
   const searchHandler = () => {
     setOpen(true);
-    dispatch(search(bloodGroup,city))
-
+    dispatch(search(bloodGroup, city));
   };
 
   return (
@@ -87,14 +84,14 @@ console.log(state)
           size="large"
           // className={classes.button}
           startIcon={<SearchIcon />}
-          onClick= {searchHandler}
+          onClick={searchHandler}
         >
           Find Donor
         </Button>
       </Box>
       <ModalPopup open={open} handleClose={handleClose}>
-        <Loader/>
-        <SearchResults/>
+        <Loader />
+        <SearchResults />
       </ModalPopup>
     </Fragment>
   );
