@@ -33,7 +33,7 @@ const search = (bloodGroup, city) => {
         
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-          // dispatch(searchSuccess({...doc.data()}))
+          dispatch(searchSuccess(doc.data()))
           console.log(doc.id, " => ", doc.data());
         });
       })

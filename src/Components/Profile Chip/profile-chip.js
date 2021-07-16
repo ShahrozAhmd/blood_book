@@ -34,7 +34,9 @@ const ProfileChip = (props) => {
           //   }
           title={props.hospital ? "Hospital Name" : "User Name"}
           subheader="Karachi, Pakistan"
+
         />
+        
         {/* header section of post box ends here..*/}
         {/* <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
