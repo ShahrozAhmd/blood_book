@@ -159,7 +159,7 @@ const CreatePost = (props) => {
             />
           </Box>
           {/* upload media icons starts here */}
-          <Box display="flex" justifyContent="space-evenly">
+          {/* <Box display="flex" justifyContent="space-evenly">
             <Box>
               <input
                 accept="image/*"
@@ -176,7 +176,7 @@ const CreatePost = (props) => {
                   <PhotoCamera />
                 </IconButton>
               </label>
-            </Box>
+            </Box> */}
 
             {/* <Box>
               <input
@@ -231,9 +231,9 @@ const CreatePost = (props) => {
                 </IconButton>
               </label>
             </Box> */}
-          </Box>
+          {/* </Box> */}
 
-          <Box display="flex" justifyContent="space-between">
+          <Box display="flex" justifyContent="space-between" style={{padding:"1%"}}>
             {/* Select blood option */}
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-simple-select-label">Blood Type</InputLabel>
@@ -261,7 +261,7 @@ const CreatePost = (props) => {
             </FormControl>
           </Box>
 
-          <Box display="flex" justifyContent="space-between">
+          <Box display="flex" justifyContent="space-between" style={{padding:"1%"}}>
             <Box>
               <FormControlLabel
                 control={
@@ -290,7 +290,7 @@ const CreatePost = (props) => {
             </Box>
           </Box>
 
-          <Box display="flex" justifyContent="space-between">
+          <Box display="flex" justifyContent="space-between" style={{padding:"1%"}}>
             <Box>
               <FormControlLabel
                 control={
@@ -323,6 +323,7 @@ const CreatePost = (props) => {
           </Box>
 
           <Button
+          style={{marginTop:"2%"}}
             onClick = {creatPostHandler}
           variant="contained" color="primary">
             POST

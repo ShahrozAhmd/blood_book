@@ -12,6 +12,7 @@ import Modal from "@material-ui/core/Modal";
 import CreatePost from "./create-post";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import ModalPopup from "../../UI/Modal/modal";
 
 //modal styling code starts here
 function rand() {
@@ -30,7 +31,6 @@ function getModalStyle() {
 }
 
 //modal styling code ends here
-
 
 const CreatePostContainer = (props) => {
   const classes = useStyles();
@@ -68,8 +68,13 @@ const CreatePostContainer = (props) => {
           </Card>
         </Box>
       </Box>
-
-      <Modal
+      <ModalPopup open={open} handleClose={handleClose}>
+      <CreatePost />
+        {/* <Box style={modalStyle} className={classes.paper}>
+          <CreatePost />
+        </Box> */}
+      </ModalPopup>
+      {/* <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
@@ -78,7 +83,7 @@ const CreatePostContainer = (props) => {
         <Box style={modalStyle} className={classes.paper}>
           <CreatePost />
         </Box>
-      </Modal>
+      </Modal> */}
     </Fragment>
   );
 };

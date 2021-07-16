@@ -11,6 +11,7 @@ import {
   setProfileRealTime,
   loadProfileOnRefresh,
 } from "./store/actions/profile_actions";
+import MyPosts from "./Pages/MyPosts/my-posts";
 
 function App() {
   const dispatch = useDispatch();
@@ -69,6 +70,9 @@ function App() {
         <Route exact path="/profile">
           <Profile />
         </Route>
+        <Router exact path="/myposts">
+          <MyPosts/>
+        </Router>
       </Switch>
     </Fragment>
   );

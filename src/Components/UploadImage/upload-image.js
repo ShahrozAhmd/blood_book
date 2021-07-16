@@ -43,22 +43,24 @@ const UploadImage = (props) => {
           .getDownloadURL()
           .then((url) => {
             setImageURL(url);
+            setGeneralProfile({ ...generalProfile, profileImage: imageURL });
+            dispatch(updateProfileData(uid, generalProfile, "general"));
           });
       }
     );
   };
 
-  useEffect(() => {
-    // if (generalProfile.profileImage === "") {
-    //
-    // }
-    setGeneralProfile({ ...generalProfile, profileImage: imageURL });
-    setTimeout(() => {
-      dispatch(updateProfileData(uid, generalProfile, "general"));
-    }, 5000);
+  // useEffect(() => {
+  //   // if (generalProfile.profileImage === "") {
+  //   //
+  //   // }
+  //   setGeneralProfile({ ...generalProfile, profileImage: imageURL });
+  //   setTimeout(() => {
+  //     dispatch(updateProfileData(uid, generalProfile, "general"));
+  //   }, 5000);
 
-    console.log(imageURL);
-  }, [imageURL]);
+  //   console.log(imageURL);
+  // }, [imageURL]);
   return (
     <div style={{ width: "100%" }}>
       {/* {generalProfile.profileImage && <img width="32" height="32" src={imageURL}/>} */}

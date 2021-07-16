@@ -27,6 +27,7 @@ import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { withStyles } from "@material-ui/core/styles";
 import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const ShowPost = (props) => {
   console.log(props.post);
@@ -174,6 +175,7 @@ const ShowPost = (props) => {
                 <Typography>{props.post.amount}</Typography>
               </Box>
             </Box>
+           
           </CardActions>
         </Card>
       </Box>

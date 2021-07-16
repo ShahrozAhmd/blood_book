@@ -18,14 +18,14 @@ const Nearby = (props) => {
             <ProfileChip />
           </Paper>
         </Box>
-        <Typography variant="button" style={{ textAlign: "center" }}>
+        {/* <Typography variant="button" style={{ textAlign: "center" }}>
           Nearby Hospitals
         </Typography>
         <Box>
           <Paper elevation={3} className={classes.root}>
             <ProfileChip hospital />
           </Paper>
-        </Box>
+        </Box> */}
       </Box>
     </Fragment>
   );
