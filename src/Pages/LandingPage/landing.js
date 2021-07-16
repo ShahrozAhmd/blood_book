@@ -79,9 +79,7 @@ const Landing = (props) => {
     }
   };
 
-  const signOutHandler = () => {
-    dispatch(signOut());
-  };
+  
 
   return (
     <Fragment>
@@ -133,22 +131,22 @@ const Landing = (props) => {
           </Grid>
           <Grid item>
             <Box mt={2}>
-              <Button
+              {/* <Button
                 startIcon={<Search />}
                 variant="contained"
                 color="primary"
                 className={classes.btn2}
               >
                 Search
-              </Button>
-              <Button
+              </Button> */}
+              {/* <Button
                 onClick={signOutHandler}
                 variant="contained"
                 color="primary"
                 className={classes.btn2}
               >
                 SignOut
-              </Button>
+              </Button> */}
             </Box>
           </Grid>
         </Grid>

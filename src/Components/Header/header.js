@@ -1,5 +1,5 @@
 import React from "react";
-import useStyles from './header-styles'
+import useStyles from "./header-styles";
 import {
   AppBar,
   Toolbar,
@@ -16,11 +16,19 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import Search from '../Search/search'
-
+import Search from "../Search/search";
+import { Link} from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signOut,
+} from "../../store/actions/auth_action";
+import { createBrowserHistory } from 'history';
 
 
 const Header = (props) => {
+  const history  = createBrowserHistory({ forceRefresh: true });
+  const dispatch = useDispatch()
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -44,7 +52,9 @@ const Header = (props) => {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
+  const signOutHandler = () => {
+    dispatch(signOut(history));
+  };
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -56,8 +66,21 @@ const Header = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link style={{ textDecoration: "none" }} to="profile">
+          Profile
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link style={{ textDecoration: "none" }} to="/myposts">
+          My Posts
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Button color="secondary"
+        onClick={signOutHandler}
+        >Logout</Button>
+      </MenuItem>
     </Menu>
   );
 
@@ -124,7 +147,7 @@ const Header = (props) => {
             {/* <div className={classes.searchIcon}>
               <SearchIcon />
             </div> */}
-            <Search/>
+            <Search />
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

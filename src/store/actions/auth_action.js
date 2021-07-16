@@ -101,7 +101,7 @@ const signInWithEmail = (email, password, history) => {
         dispatch(signInWithEmailSuccess(res.user));
         localStorage.setItem("uid", res.user.uid);
         dispatch(loadProfileOnSignIn(res.user.uid))
-        history.push("/profile");
+        history.push("/dashboard");
       })
       .catch((error) => {
         dispatch(signInWithEmailFailed(error.message));
@@ -219,7 +219,7 @@ const authStateObserver = (user) => {
   };
 };
 // Signout all users, email and google both
-const signOut = () => {
+const signOut = (history) => {
   return (dispatch) => {
     firebaseAuth
       .signOut()
@@ -227,6 +227,7 @@ const signOut = () => {
         dispatch(vanishProfileOnSignOut());
         dispatch(signOutSuccess(res));
         localStorage.removeItem("uid");
+        history.push("/")
         console.log(res);
       })
       .catch((error) => {

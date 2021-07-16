@@ -8,6 +8,7 @@ const initiaState = {
   isSignUp: false,
   isSignIn: false,
   isSignOut: false,
+  error: false
 };
 
 const reducer = (state = initiaState, action) => {
@@ -38,13 +39,16 @@ const reducer = (state = initiaState, action) => {
         ...state,
         isSignInLoading: false,
         isSignIn: true,
+        isSignUp:false
       };
       break;
     case actionTypes.SIGN_IN_WITH_EMAIL_FAILED:
       return {
         ...state,
+        authData: action.payload.data,
         isSignInLoading: false,
         isSignIn: false,
+        error: true
       };
       break;
     case actionTypes.SIGN_IN_WITH_GOOGLE_INIT:
@@ -62,6 +66,8 @@ const reducer = (state = initiaState, action) => {
         ...state,
         isGoogleLoading: false,
         isSignIn: false,
+        authData: action.payload.data,
+        error:true,
       };
       break;
     case actionTypes.SIGN_OUT_SUCCESS:
@@ -87,7 +93,7 @@ const reducer = (state = initiaState, action) => {
       break;
 
     default:
-      return state;
+      return {...state};
   }
 };
 
