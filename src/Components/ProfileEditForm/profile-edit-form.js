@@ -102,6 +102,7 @@ function ProfileEditForm(props) {
           <UploadImage />
           <TextField
             style={{ marginTop: "3%" }}
+            value= {generalProfile.name}
             id="outlined-basic"
             label="Name"
             variant="outlined"

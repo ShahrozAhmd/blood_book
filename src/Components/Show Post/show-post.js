@@ -27,7 +27,10 @@ import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { withStyles } from "@material-ui/core/styles";
 import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from "@material-ui/icons/Delete";
+import PhoneIcon from "@material-ui/icons/Phone";
+import DraftsIcon from "@material-ui/icons/Drafts";
+import LocationCityIcon from '@material-ui/icons/LocationCity';
 
 const ShowPost = (props) => {
   console.log(props.post);
@@ -40,7 +43,6 @@ const ShowPost = (props) => {
   // };
 
   return (
-    
     <Fragment>
       <Box className={classes.root}>
         <Card>
@@ -62,11 +64,14 @@ const ShowPost = (props) => {
           <CardHeader
             avatar={
               <Avatar
-              src= {props.post.creatorProfileImage != null?
-                props.post.creatorProfileImage:
-                "/static/images/avatar/1.jpg"}
-               aria-label="profile-picture" 
-               className={classes.avatar}>
+                src={
+                  props.post.creatorProfileImage != null
+                    ? props.post.creatorProfileImage
+                    : "/static/images/avatar/1.jpg"
+                }
+                aria-label="profile-picture"
+                className={classes.avatar}
+              >
                 U
               </Avatar>
             }
@@ -81,7 +86,8 @@ const ShowPost = (props) => {
             //     </Typography>
             //   }
             title={props.post.creatorUserName}
-            // subheader={props.post.createdDate.seconds}
+            subheader={props.post.createdDate? props.post.createdDate.toDate().toString() :
+            "Date"}
           />
           {/* header section of post box ends here..*/}
 
@@ -92,13 +98,38 @@ const ShowPost = (props) => {
           </CardContent>
 
           {/* Custom section 01 */}
-          <CardActions>
-            <Box
-              display="flex"
-              justifyContent="space-evenly"
-              style={{ width: "100%" }}
-            >
-              <Box>
+
+          <Box
+            display="flex"
+            justifyContent="space-evenly"
+            style={{ width: "100%" }}
+          >
+            <Box>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <PhoneIcon
+                  style={{ color: "red", display: "inline-block" }}
+                />
+              {props.post.creatorPhoneNumber?props.post.creatorPhoneNumber: "Phone Number" }
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <LocationCityIcon
+                  style={{ color: "red", display: "inline-block" }}
+                />
+                {props.post.creatorCity?props.post.creatorCity: "Location" }
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <DraftsIcon style={{ color: "red", display: "inline-block" }} />
+                {props.post.creatorEmail?props.post.creatorEmail: "Email" }
+              </Typography>
+            </Box>
+          </Box>
+          {/* <Box>
                 <p>Attached:</p>
               </Box>
               <Box>
@@ -138,9 +169,8 @@ const ShowPost = (props) => {
                 >
                   <PersonPinCircleIcon />
                 </IconButton>
-              </Box>
-            </Box>
-          </CardActions>
+              </Box> */}
+          {/* </Box> */}
 
           {/* Custom section 02 */}
           <CardActions>
@@ -150,12 +180,20 @@ const ShowPost = (props) => {
               style={{ width: "100%" }}
             >
               <Box style={{ display: "inline", margin: 0, padding: 0 }}>
-                <Typography>{props.post.bloodGroup != null ?props.post.bloodGroup :"Blood Group"}</Typography>
+                <Typography>
+                  {props.post.bloodGroup != null
+                    ? props.post.bloodGroup
+                    : "Blood Group"}
+                </Typography>
                 <FaTint size={"1.7em"} style={{ color: "red" }} />
               </Box>
               <Box>
                 <FaBong size={"1.7em"} style={{ color: "skyBlue" }} />
-                <Typography>{props.post.noOfBottles != null ?props.post.noOfBottles :"Blood Bottles"}</Typography>
+                <Typography>
+                  {props.post.noOfBottles != null
+                    ? props.post.noOfBottles
+                    : "Blood Bottles"}
+                </Typography>
               </Box>
             </Box>
           </CardActions>
@@ -175,7 +213,6 @@ const ShowPost = (props) => {
                 <Typography>{props.post.amount}</Typography>
               </Box>
             </Box>
-           
           </CardActions>
         </Card>
       </Box>

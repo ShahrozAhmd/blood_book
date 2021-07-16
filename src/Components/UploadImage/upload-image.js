@@ -43,11 +43,15 @@ const UploadImage = (props) => {
           .getDownloadURL()
           .then((url) => {
             setImageURL(url);
-            setGeneralProfile({ ...generalProfile, profileImage: imageURL });
-            dispatch(updateProfileData(uid, generalProfile, "general"));
+            if (imageURL != null) {
+              setGeneralProfile({ ...generalProfile, profileImage: imageURL });
+              dispatch(updateProfileData(uid, generalProfile, "general"));
+              window.location.reload();
+            }
           });
       }
     );
+    window.location.reload();
   };
 
   // useEffect(() => {
@@ -73,21 +77,25 @@ const UploadImage = (props) => {
       />
       <label style={{ width: "100%" }} htmlFor="contained-button-file">
         <Button fullWidth variant="contained" color="primary" component="span">
-          {generalProfile.profileImage !== ""
-            ? "Change Profile Image"
-            : "Choose Profile Image"}
+          Change Profile Image
         </Button>
       </label>
-      <Button
-        disabled={!image ? true : false}
-        onClick={handleUpload}
-        fullWidth
-        variant="contained"
-        style={{ backgroundColor: "#4DD637", color: "white", marginTop: "3%" }}
-        component="span"
-      >
-        Upload Profile Image
-      </Button>
+      {image ? (
+        <Button
+          disabled={!image ? true : false}
+          onClick={handleUpload}
+          fullWidth
+          variant="contained"
+          style={{
+            backgroundColor: "#4DD637",
+            color: "white",
+            marginTop: "3%",
+          }}
+          component="span"
+        >
+          Upload Profile Image
+        </Button>
+      ) : null}
     </div>
   );
 };

@@ -18,8 +18,8 @@ import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
 import { useSelector, useDispatch } from "react-redux";
-import {timeStamp} from '../../config/firebase_config'
-import {createPost} from '../../store/actions/post_actions'
+import { timeStamp } from "../../config/firebase_config";
+import { createPost } from "../../store/actions/post_actions";
 const CreatePost = (props) => {
   const state = useSelector((state) => state.profile.profileData);
   const dispatch = useDispatch();
@@ -79,17 +79,17 @@ const CreatePost = (props) => {
     const noOfBottles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
     return noOfBottles.map((item) => <MenuItem value={item}>{item}</MenuItem>);
   };
-  var postObj={}
+  var postObj = {};
   var allProfileData = {};
   var a = state;
   var profileData = {
     ...a,
   };
   var uid =
-    localStorage.getItem("uid") != null ? localStorage.getItem("uid") : null
+    localStorage.getItem("uid") != null ? localStorage.getItem("uid") : null;
 
   useEffect(() => {
-     postObj = {
+    postObj = {
       creatorUserName: profileData.general.name,
       creatorUid: uid,
       creatorCity: profileData.bio.city,
@@ -138,7 +138,7 @@ const CreatePost = (props) => {
 
   const creatPostHandler = () => {
     dispatch(createPost(postObj));
-  }
+  };
 
   return (
     <Box className={classes.createpostbox}>
@@ -178,7 +178,7 @@ const CreatePost = (props) => {
               </label>
             </Box> */}
 
-            {/* <Box>
+          {/* <Box>
               <input
                 accept="image/*"
                 className={classes.input}
@@ -233,7 +233,11 @@ const CreatePost = (props) => {
             </Box> */}
           {/* </Box> */}
 
-          <Box display="flex" justifyContent="space-between" style={{padding:"1%"}}>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            style={{ padding: "1%" }}
+          >
             {/* Select blood option */}
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-simple-select-label">Blood Type</InputLabel>
@@ -261,7 +265,11 @@ const CreatePost = (props) => {
             </FormControl>
           </Box>
 
-          <Box display="flex" justifyContent="space-between" style={{padding:"1%"}}>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            style={{ padding: "1%" }}
+          >
             <Box>
               <FormControlLabel
                 control={
@@ -290,7 +298,11 @@ const CreatePost = (props) => {
             </Box>
           </Box>
 
-          <Box display="flex" justifyContent="space-between" style={{padding:"1%"}}>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            style={{ padding: "1%" }}
+          >
             <Box>
               <FormControlLabel
                 control={
@@ -323,9 +335,11 @@ const CreatePost = (props) => {
           </Box>
 
           <Button
-          style={{marginTop:"2%"}}
-            onClick = {creatPostHandler}
-          variant="contained" color="primary">
+            style={{ marginTop: "2%" }}
+            onClick={creatPostHandler}
+            variant="contained"
+            color="primary"
+          >
             POST
           </Button>
         </Box>
