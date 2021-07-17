@@ -24,9 +24,11 @@ import {
   signInWithGoogle,
   signOut,
 } from "../../store/actions/auth_action";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import ModalPopup from "../../UI/Modal/modal";
 
 const Landing = (props) => {
+  const [signUpMessage, setSignupMessage] = useState(null);
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -35,6 +37,8 @@ const Landing = (props) => {
   const state = useSelector((state) => state.authentication);
   console.log(state.authData);
   const [open, setOpen] = useState(false);
+
+  // const [signUpModal, setSignUpModalOpen] = useState(false);
 
   const [credentials, setCredentials] = useState({
     email: null,
@@ -73,13 +77,23 @@ const Landing = (props) => {
   const emailAndPassSignHandler = (e) => {
     e.preventDefault();
     if (open) {
-      dispatch(signUpWithEmail(credentials.email, credentials.password,history));
+      dispatch(
+        signUpWithEmail(credentials.email, credentials.password, history)
+      );
     } else {
-      dispatch(signInWithEmail(credentials.email, credentials.password,history));
+      dispatch(
+        signInWithEmail(credentials.email, credentials.password, history)
+      );
     }
   };
 
-  
+  // if (state.isSignUp) {
+  //   setOpen(false);
+  //   setSignUpModalOpen(true);
+  //   setSignupMessage(
+  //     "Congratulations!! you have Signup Successfully, Signin To Login"
+  //   );
+  // }
 
   return (
     <Fragment>
@@ -183,6 +197,9 @@ const Landing = (props) => {
             <img src={drImage} className={classes.img2} />
           </Grid>
         </Grid>
+        {/* <ModalPopup open={signUpModalOpen} handleClose={signUpModalClose}>
+          {signUpMessage &&  signUpMessage}
+        </ModalPopup> */}
       </Container>
     </Fragment>
   );

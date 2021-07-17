@@ -46,14 +46,17 @@ const UploadImage = (props) => {
             if (imageURL != null) {
               setGeneralProfile({ ...generalProfile, profileImage: imageURL });
               dispatch(updateProfileData(uid, generalProfile, "general"));
-              window.location.reload();
+              
             }
           });
       }
     );
-    window.location.reload();
+    
   };
 
+  if(imageURL != null){
+    window.location.reload();
+  }
   // useEffect(() => {
   //   // if (generalProfile.profileImage === "") {
   //   //

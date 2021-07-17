@@ -78,7 +78,7 @@ const Search = (props) => {
         </Box>
 
         <Button
-          fullWidth
+         
           variant="oulined"
           color="primary"
           size="large"

@@ -108,14 +108,14 @@ function ProfileEditForm(props) {
             variant="outlined"
             fullWidth
             name="name"
-            onChange={generalTextFieldChangeHandler}
+            onChange={ generalTextFieldChangeHandler}
           />
           <Button
             variant="contained"
             color="secondary"
             className={classes.button}
             startIcon={<DoneIcon />}
-            onClick={updateDataHandler("general")}
+            onClick={() =>  updateDataHandler("general")}
           >
             UPDATE
           </Button>
@@ -207,7 +207,7 @@ function ProfileEditForm(props) {
             color="secondary"
             className={classes.button}
             startIcon={<DoneIcon />}
-            onClick={updateDataHandler("bio")}
+            onClick={() => updateDataHandler("bio")}
           >
             UPDATE
           </Button>
@@ -320,7 +320,7 @@ function ProfileEditForm(props) {
             color="secondary"
             className={classes.button}
             startIcon={<DoneIcon />}
-            onClick={updateDataHandler("personal")}
+            onClick={() =>  updateDataHandler("personal")}
           >
             UPDATE
           </Button>
@@ -367,7 +367,7 @@ function ProfileEditForm(props) {
             color="secondary"
             className={classes.button}
             startIcon={<DoneIcon />}
-            onClick={updateDataHandler("professional")}
+            onClick={() =>  updateDataHandler("professional")}
           >
             UPDATE
           </Button>

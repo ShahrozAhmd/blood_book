@@ -18,6 +18,7 @@ import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form"
 import { useSelector, useDispatch } from "react-redux";
 import { db } from "../../config/firebase_config";
 import { setProfileRealTime } from "../../store/actions/profile_actions";
+
 function Profile(props) {
   const dispatch = useDispatch();
 
@@ -32,15 +33,19 @@ function Profile(props) {
   // UI level states to make clear that on which section user click to edit in his profile
   const [whichToEdit, setWhichToEdit] = useState(null);
 
-  const handleOpen = (arg) => {
+  const handleOpen = (para) => {
+  
     setOpen(true);
-    setWhichToEdit(arg);
+    setWhichToEdit(para);
+    
   };
 
   const handleClose = () => {
     setWhichToEdit(null);
     setOpen(false);
   };
+
+
   // this is a realtime listner for our profile data, it listen evry changes in our profile
   // document in firestore and update the global local store
   useEffect(() => {
