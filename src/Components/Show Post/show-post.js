@@ -85,7 +85,7 @@ const ShowPost = (props) => {
             //         Karachi, Pakistan
             //     </Typography>
             //   }
-            title={props.post.creatorUserName}
+            title={props.post.creatorUserName? props.post.creatorUserName: "User Name"}
             subheader={props.post.createdDate? props.post.createdDate.toDate().toString() :
             "Date"}
           />
