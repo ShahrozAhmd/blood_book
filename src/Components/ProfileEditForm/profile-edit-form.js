@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateProfileData } from "../../store/actions/profile_actions";
 import UploadImage from "../UploadImage/upload-image";
 
+
 const BLOOD_GROUPS = [
   { bloodType: "A+" },
   { bloodType: "A-" },

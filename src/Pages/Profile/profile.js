@@ -18,12 +18,14 @@ import ProfileEditForm from "../../Components/ProfileEditForm/profile-edit-form"
 import { useSelector, useDispatch } from "react-redux";
 import { db } from "../../config/firebase_config";
 import { setProfileRealTime } from "../../store/actions/profile_actions";
+import Snackbar from "../../Components/SnackBar/snackbar";
 
 function Profile(props) {
   const dispatch = useDispatch();
 
   // states get from global store:
   const profile = useSelector((state) => state.profile.profileData);
+  const profileResponse = useSelector((state) => state.profile);
 
   const auth = useSelector((state) => state.authentication.authData);
   console.log(profile);
@@ -32,19 +34,27 @@ function Profile(props) {
   const [open, setOpen] = useState(false);
   // UI level states to make clear that on which section user click to edit in his profile
   const [whichToEdit, setWhichToEdit] = useState(null);
+  // state to get the state of editing task:
+
+  const [status, setStatus] = useState({
+    success: profileResponse.isImageUploaded,
+    error: profileResponse.isErrorInImageUploading,
+  });
+
+  const [message, setMessage] = useState({
+    successMessage: profileResponse.successMessage,
+    errorMessage: profileResponse.errorMessage,
+  });
 
   const handleOpen = (para) => {
-  
     setOpen(true);
     setWhichToEdit(para);
-    
   };
 
   const handleClose = () => {
     setWhichToEdit(null);
     setOpen(false);
   };
-
 
   // this is a realtime listner for our profile data, it listen evry changes in our profile
   // document in firestore and update the global local store
@@ -59,6 +69,25 @@ function Profile(props) {
         });
     }
   }, []);
+
+  useEffect(() => {
+    setStatus({
+      ...status,
+      success: profileResponse.isImageUploaded,
+      error: profileResponse.isErrorInImageUploading,
+    });
+    setMessage({
+      ...message,
+      successMessage: profileResponse.successMessage,
+      errorMessage: profileResponse.errorMessage,
+    });
+
+    console.log("status wala use effect");
+  }, [
+    profileResponse.isImageUploaded,
+    profileResponse.isErrorInImageUploading,
+  ]);
+
   return profile ? (
     <Fragment>
       <CssBaseline />
@@ -94,7 +123,13 @@ function Profile(props) {
           <Box display="flex" flexDirection="column" flexWrap="wrap">
             <ProfileEditButton name="general" clicked={handleOpen} />
             <Box style={{ padding: "2%" }}>
-              <ProfileImage image = {profile.general.profileImage? profile.general.profileImage: null}/>
+              <ProfileImage
+                image={
+                  profile.general.profileImage
+                    ? profile.general.profileImage
+                    : null
+                }
+              />
               <br />
               <Typography variant="h6" gutterBottom>
                 {profile.general.name ? profile.general.name : "Your Name"}
@@ -264,8 +299,11 @@ function Profile(props) {
       {/* modal rendering code execute on state change*/}
       <ModalPopup open={open} handleClose={handleClose}>
         {/* children for modal , specific for form section data updation */}
-        <ProfileEditForm toEdit={whichToEdit} handleClose={handleClose}/>
+        <ProfileEditForm toEdit={whichToEdit} handleClose={handleClose} />
       </ModalPopup>
+      {status.success || status.error ? (
+        <Snackbar message={message} status={status} />
+      ) : null}
     </Fragment>
   ) : null;
 }

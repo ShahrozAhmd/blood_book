@@ -16,6 +16,7 @@ const Nearby = (props) => {
         <Box>
           <Paper elevation={3} className={classes.root}>
             <ProfileChip />
+          
           </Paper>
         </Box>
         {/* <Typography variant="button" style={{ textAlign: "center" }}>
